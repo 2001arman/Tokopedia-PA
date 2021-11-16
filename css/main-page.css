@@ -1,0 +1,239 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Open Sans", sans-serif;
+}
+
+/* navbar */
+
+.navbar {
+  height: 80px;
+  width: 100%;
+  background-color: white;
+  box-shadow: 3px 0px 5px rgb(197, 197, 197);
+  position: fixed;
+  padding: 20px 40px;
+  box-sizing: border-box;
+  display: flex;
+  left: 0;
+  top: 0;
+  z-index: 10;
+}
+
+.nama {
+  font-weight: bold;
+}
+
+.jarak {
+  flex-grow: 2;
+}
+
+.navbar .user{
+  display: flex;
+  align-items: center;
+}
+
+.navbar .user img{
+  width: 25px;
+  height: 25px;
+  margin-right: 20px;
+  background-size: cover;
+}
+
+.navbar .user .avatar{
+  margin-right: 10px;
+}
+
+.navbar .user span{
+  font-size: 14px;
+  color: #0000008A;
+}
+
+.divider{
+  width: 1px;
+  height: 25px;
+  background-color: #0000008A;
+  margin-right: 20px;
+}
+
+/* konten */
+.margin {
+  margin-top: 100px;
+}
+
+.container-konten {
+  width: 90%;
+  margin: 0 auto 50px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(211, 211, 211, 0.5);
+}
+
+.judul-section {
+  display: flex;
+  align-items: center;
+}
+
+.judul-section a {
+  margin-left: 20px;
+  margin-top: 5px;
+  text-decoration: none;
+  color: #03ac0e;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.container-konten .jumbotron{
+  border-radius: 10px;
+  margin: 20px 0;
+}
+
+.container-konten .barang-section {
+  margin-top: 20px;
+  display: flex;
+  overflow-x: scroll;
+}
+
+.container-konten .semua-barang-section{
+  width: 90%;
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  /* justify-content: start; */
+}
+
+.card-barang {
+  width: 200px;
+  height: 300px;
+  background-color: white;
+  box-shadow: 3px 2px 5px rgba(184, 184, 184, 0.3);
+  border-radius: 10px;
+  margin-right: 10px;
+  margin-bottom: 7px;
+  flex: none;
+  /* background-color: blue; */
+}
+
+.card-barang .image-card {
+  width: 200px;
+  height: 180px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  background-size: cover;
+}
+
+.card-barang .keterangan {
+  padding: 8px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.card-barang .container-nama {
+  max-height: 40px;
+  width: 190px;
+  text-overflow: ellipsis;
+}
+
+.card-barang .nama-barang {
+  max-width: 100%;
+  max-height: 100%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: normal;
+  font-size: 15px;
+  color: #31353bf5;
+  font-family: "Open Sans", sans-serif;
+  margin-bottom: 4px;
+}
+
+.card-barang .harga {
+  font-weight: bold;
+  font-style: 14px;
+  margin-bottom: 4px;
+}
+
+.card-barang .lokasi {
+  display: flex;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.card-barang .icon {
+  width: 16px;
+  height: 16px;
+  margin-right: 5px;
+}
+
+.card-barang .detail-barang {
+  font-size: 13px;
+  color: #31353b8a;
+}
+
+.card-barang .detail-rating {
+  display: flex;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+/* trending */
+.container-trending {
+  width: 90%;
+  margin: 0 auto 50px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(211, 211, 211, 0.5);
+}
+
+.container-trending .judul-section .refresh-trending{
+  display: flex;
+  align-items: center;
+}
+
+.judul-section .icon-judul{
+  width: 22px;
+  height: 22px;
+  filter: invert(39%) sepia(100%) saturate(745%) hue-rotate(84deg) brightness(98%) contrast(107%);
+  margin-left: 20px;
+  display: fixed;
+}
+
+.container-trending .judul-section a{
+  margin-left: 6px;
+  font-size: 16px;
+}
+
+.container-trending .barang-section {
+  margin-top: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.container-trending .barang-section .card-trending{
+  width: 250px;
+  height: 100px;
+  /* background-color: khaki; */
+  border-radius: 10px;
+  box-shadow: 3px 2px 5px rgba(184, 184, 184, 0.3);
+  margin-bottom: 20px;
+  display: flex;
+}
+
+.container-trending .card-trending .image-trending{
+  height: 100px;
+  width: 120px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.container-trending .card-trending .keterangan{
+  margin: auto;
+}
+
+.container-trending .card-trending .keterangan .nama{
+  margin-bottom: 8px;
+}
+
+.container-trending .card-trending .keterangan .jumlah{
+  font-size: 14px;
+  color: #31353BAD;
+}
