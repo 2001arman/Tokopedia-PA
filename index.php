@@ -93,7 +93,7 @@ if (isset($_POST["sort"])) {
                 <td><?= $tbl["stok"]; ?></td>
                 <td><?= $tbl["harga"]; ?></td>
                 <td>
-                   <img src="https://drive.google.com/uc?export=view&amp;id=17zXK-BBjmhNC7WABBZjMbc9xt_cJeSXO" width="100" height="100" >
+                   <img src="<?= $tbl["gambar"]; ?>" width="100" height="100" >
                 </td>
                 <td><?= $tbl["kategori"]; ?></td>
                 <td>
