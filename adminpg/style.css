@@ -96,8 +96,15 @@ button{
 }
 
 #trim2{
-	display: inline;
+	/* display: inline; */
 	font-size: 14px;
+	width: 200px;
+	height: 200px;
+}
+
+.img-barang{
+	width: 200px;
+	height: 200px;
 }
 
 #lgtxt{

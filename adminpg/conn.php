@@ -1,5 +1,5 @@
 <?php
-$conn = new mysqli("localhost","root","","dbtokopdia");
+$conn = new mysqli("localhost","root","","tokopedia");
 if($conn){
     
 }
@@ -28,7 +28,7 @@ function search($keyword, $by){
 		";
 	}
 	else{
-		$query = "SELECT * FROM tbbarang WHERE $by LIKE '%$keyword%'";
+		$query = "SELECT * FROM barang WHERE $by LIKE '%$keyword%'";
 	}
 	return query($query);
 }

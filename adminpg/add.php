@@ -8,7 +8,7 @@ if (isset($_POST["submit"])) {
     $harga = htmlspecialchars($_POST['harga']);
     $gambar = htmlspecialchars($_POST['gambar']);
     $kategori = htmlspecialchars($_POST['kategori']);
-    $conn->query("INSERT INTO tbbarang VALUES ('$nama','$desc','$stok','$harga','$gambar', '$kategori')");
+    $conn->query("INSERT INTO barang VALUES ('', '$nama','$desc','$stok','$harga','$gambar', '$kategori')");
     
     if ($conn) {
         echo "<script>

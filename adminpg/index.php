@@ -1,6 +1,6 @@
 <?php
 require 'conn.php';
-$result = query("SELECT * FROM tbbarang");
+$result = query("SELECT * FROM barang");
     if (isset($_POST["cari"])) {
         $by = ($_POST['by']);
         $result = search($_POST['search'], $by);
@@ -8,7 +8,7 @@ $result = query("SELECT * FROM tbbarang");
 if (isset($_POST["sort"])) {
     $sortto=($_POST["sortto"]);
     $sortkey=($_POST["sortby"]);
-        $result= query("SELECT * FROM tbbarang ORDER BY $sortkey $sortto ");
+        $result= query("SELECT * FROM barang ORDER BY $sortkey $sortto ");
 }
 ?>
 
@@ -77,11 +77,11 @@ if (isset($_POST["sort"])) {
                 
                 <!-- TAMPILAN TEKS DETAIL TRIMMED -->
                 <div id="trim1">
-                <?= nl2br(substr($tbl["desc_brg"],0,10)); ?>(...)
+                <?= nl2br(substr($tbl["deskripsi"],0,10)); ?>(...)
                 </div>
                 <!-- TAMPILAN TEKS DETAIL SHOW ALL -->
                 <div id="more1">
-                    <?=nl2br(substr($tbl["desc_brg"],0,strlen($tbl["desc_brg"])))?>   
+                    <?=nl2br(substr($tbl["deskripsi"],0,strlen($tbl["deskripsi"])))?>   
                 </div>
                 <button type="button" onclick="readmore1()" id="btn3-1">Selengkapnya</button>
 
@@ -91,13 +91,13 @@ if (isset($_POST["sort"])) {
                 <td>
                     <!-- TAMPILAN TEKS DETAIL TRIMMED -->
                 <div id="trim2">
-                <?= substr($tbl["gambar"],0,10); ?>(...)
+                    <img src="<?= $tbl["gambar"] ?>" alt="" class="img-barang"> 
                 </div>
                 <!-- TAMPILAN TEKS DETAIL SHOW ALL -->
                 <div id="more2">
-                    <?=nl2br(substr($tbl["gambar"],0,strlen($tbl["desc_brg"])))?>   
+                    <?=nl2br(substr($tbl["gambar"],0,strlen($tbl["deskripsi"])))?>   
                 </div>
-                <button type="button" onclick="readmore2()" id="btn3-2">Selengkapnya</button>
+                <!-- <button type="button" onclick="readmore2()" id="btn3-2">Selengkapnya</button> -->
                 </td>
                 <td><?= $tbl["kategori"]; ?></td>
                 <td>
@@ -133,23 +133,23 @@ if (isset($_POST["sort"])) {
             more.style.display = "inline";
         }
     }
-    function readmore2() {
-        var trim = document.getElementById('trim2');
-        var more = document.getElementById('more2');
-        var btn = document.getElementById('btn3-2');
+    // function readmore2() {
+    //     var trim = document.getElementById('trim2');
+    //     var more = document.getElementById('more2');
+    //     var btn = document.getElementById('btn3-2');
 
-        if (trim.style.display === "none") {
-            trim.style.display = "inline";
-            btn.innerHTML = "Selengkapnya";
-            more.style.display = "none";
+    //     if (trim.style.display === "none") {
+    //         trim.style.display = "inline";
+    //         btn.innerHTML = "Selengkapnya";
+    //         more.style.display = "none";
 
-        }
-        else{
-            trim.style.display = "none";
-            btn.innerHTML ="Lebih Sedikit";
-            more.style.display = "inline";
-        }
-    }
+    //     }
+    //     else{
+    //         trim.style.display = "none";
+    //         btn.innerHTML ="Lebih Sedikit";
+    //         more.style.display = "inline";
+    //     }
+    // }
     </script>
  </body>
  </html>

@@ -2,7 +2,7 @@
 require 'conn.php';
 
 $nama = $_GET["nama"];
-$result = query("SELECT * FROM tbbarang WHERE nama='$nama'");
+$result = query("SELECT * FROM barang WHERE nama='$nama'");
 $result = $result[0];
 
 if (isset($_POST["submit"])) {
@@ -13,7 +13,7 @@ if (isset($_POST["submit"])) {
     $harga = htmlspecialchars($_POST['harga']);
     $gambar = htmlspecialchars($_POST['gambar']);
     $kategori = htmlspecialchars($_POST['kategori']);
-    $conn->query("UPDATE tbbarang SET 
+    $conn->query("UPDATE barang SET 
         nama='$nama', 
         desc_brg='$desc',
         stok='$stok', 

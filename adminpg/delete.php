@@ -2,7 +2,7 @@
 require 'conn.php';
 
 $nama = $_GET['nama'];
-$conn->query("DELETE FROM tbbarang WHERE nama='$nama'");
+$conn->query("DELETE FROM barang WHERE nama='$nama'");
 
 if ($conn) {
     echo "<script>
