@@ -50,7 +50,7 @@ foreach ($list_user as $key => $value) {
 	if($value['username'] == $user['username'] && $value['password'] == $user['password']){
 
 		$_SESSION['login'] = true;
-		header("Location: admin.php");
+		header("Location: adminpg/index.php");
 
 	}
 }
