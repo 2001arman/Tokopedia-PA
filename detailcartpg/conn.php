@@ -1,5 +1,5 @@
 <?php
-$conn = new mysqli("localhost","root","","dbtokopdia");
+$conn = new mysqli("localhost","root","","tokopedia");
 if($conn){
     
 }

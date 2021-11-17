@@ -2,7 +2,7 @@
 require 'conn.php';
 
 // $nama = $_GET["nama"];
-$result = query("SELECT * FROM tbbarang WHERE nama='Sepatu Ventela'"); //DISINI JANGAN LUPA UBAH NAMA TABEL DAN VARIABEL YANG DITARIK
+$result = query("SELECT * FROM barang WHERE nama='Sepatu Ventela'"); //DISINI JANGAN LUPA UBAH NAMA TABEL DAN VARIABEL YANG DITARIK
 $result = $result[0];
 $trim = substr($result["desc_brg"],0,200);
 ?>
