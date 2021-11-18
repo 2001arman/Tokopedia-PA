@@ -1,14 +1,15 @@
 a{
   text-decoration: none;
   color: white;
+  font-family: arial;
 }
 
 body {
-  background-image: linear-gradient(to bottom right, #006d9c, #20b9fa);
   font-size: 11.5pt;
-  /*display: flex;
+  display: flex;
   justify-content: center;
-  align-items: center;*/
+  align-items: center;
+  flex-direction: column;
   min-height: 609px;
 }
 table {
@@ -16,13 +17,13 @@ table {
 }
 
 td{
-	border: 3px solid black;
+	border: 1px solid black;
 	padding: 5px 10px;
 }
 
 th {
 	padding: 10px;
-	background-color: black;
+	background-color: #1aa344;
 	color: white;
 }
 
@@ -50,7 +51,7 @@ button{
 	background: rgba(0,0,0,0);
 	border: 0;
 	padding: 0;	
-	color: #fa2020;
+	color: #25cc33;
 }
 
 /*#btn3-2{
@@ -95,7 +96,7 @@ button{
 	height: 400px;
 }
 
-input[type=text]{
+input[type=text], input[type=number]{
 	align: left;
   border-radius: 15px;
   border: 2px solid #73AD21;
@@ -104,14 +105,34 @@ input[type=text]{
   height: 20px;
 }
 
-#navbar{
-	padding: 10px;
-	background-image: linear-gradient(to bottom right, #03124d, #3c62fa);
-	display: flex;
-	justify-content: space-between;
+textarea, select{
 	border-radius: 15px;
+  border: 2px solid #73AD21;
+  padding: 10px;
 }
 
+#navbar{
+	width: 1329px;
+	margin: 0;
+	padding: 8px;
+	border-radius: 12px;
+	border-bottom: 2px solid #1aa344;;
+	display: flex;
+	justify-content: space-between;
+}
 
+.fixtbl1{
+	display:table-cell;
+	width:100px;
+	min-width:100px;
+}
 
+.fixtbl2{
+	display:table-cell;
+	width:350px;
+	min-width:35	0px;
+}
 
+label{
+	font-weight: bold;
+}
