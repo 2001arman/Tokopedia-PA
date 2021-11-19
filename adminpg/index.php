@@ -74,30 +74,26 @@ if (isset($_POST["sort"])) {
                 <td align="center"><?= $no; ?></td>
                 <td><?= $tbl["nama"]; ?></td>
                 <td>
+                <div class="namakelas" kode-id="<?= $no ?>">
+                
                 
                 <!-- TAMPILAN TEKS DETAIL TRIMMED -->
-                <div id="trim1">
+                <div class="trim">
                 <?= nl2br(substr($tbl["deskripsi"],0,10)); ?>(...)
                 </div>
                 <!-- TAMPILAN TEKS DETAIL SHOW ALL -->
-                <div id="more1">
-                    <?=nl2br(substr($tbl["deskripsi"],0,strlen($tbl["deskripsi"])))?>   
+                <div class="more">
+                    <?=nl2br($tbl["deskripsi"])?>   
                 </div>
-                <button type="button" onclick="readmore1()" id="btn3-1">Selengkapnya</button>
+                <button type="button" onclick="readmore('<?= $no ?>')" class="btn">Selengkapnya</button>
+                
 
+                </div>
                 </td>
                 <td><?= $tbl["stok"]; ?></td>
                 <td><?= $tbl["harga"]; ?></td>
                 <td>
-                    <!-- TAMPILAN TEKS DETAIL TRIMMED -->
-                <div id="trim2">
-                    <img src="<?= $tbl["gambar"] ?>" alt="" class="img-barang"> 
-                </div>
-                <!-- TAMPILAN TEKS DETAIL SHOW ALL -->
-                <div id="more2">
-                    <?=nl2br(substr($tbl["gambar"],0,strlen($tbl["deskripsi"])))?>   
-                </div>
-                <!-- <button type="button" onclick="readmore2()" id="btn3-2">Selengkapnya</button> -->
+                   <img src="<?= $tbl["gambar"]; ?>" width="100" height="100" >
                 </td>
                 <td><?= $tbl["kategori"]; ?></td>
                 <td>
@@ -116,10 +112,10 @@ if (isset($_POST["sort"])) {
 
 
     <script>
-    function readmore1() {
-        var trim = document.getElementById('trim1');
-        var more = document.getElementById('more1');
-        var btn = document.getElementById('btn3-1');
+    function readmore(a) {
+        var trim = document.querySelector(`.namakelas[kode-id="${a}"] .trim`);
+        var more = document.querySelector(`.namakelas[kode-id="${a}"] .more`);
+        var btn = document.querySelector(`.namakelas[kode-id="${a}"] .btn`);
 
         if (trim.style.display === "none") {
             trim.style.display = "inline";
@@ -133,23 +129,6 @@ if (isset($_POST["sort"])) {
             more.style.display = "inline";
         }
     }
-    // function readmore2() {
-    //     var trim = document.getElementById('trim2');
-    //     var more = document.getElementById('more2');
-    //     var btn = document.getElementById('btn3-2');
-
-    //     if (trim.style.display === "none") {
-    //         trim.style.display = "inline";
-    //         btn.innerHTML = "Selengkapnya";
-    //         more.style.display = "none";
-
-    //     }
-    //     else{
-    //         trim.style.display = "none";
-    //         btn.innerHTML ="Lebih Sedikit";
-    //         more.style.display = "inline";
-    //     }
-    // }
     </script>
  </body>
  </html>

@@ -1,3 +1,20 @@
+<?php
+
+  require 'adminpg/conn.php';
+
+  $result = query("SELECT * FROM barang WHERE kategori = 'celana'");
+//     if (isset($_POST["cari"])) {
+//         $by = ($_POST['by']);
+//         $result = search($_POST['search'], $by);
+//     }
+// if (isset($_POST["sort"])) {
+//     $sortto=($_POST["sortto"]);
+//     $sortkey=($_POST["sortby"]);
+//         $result= query("SELECT * FROM barang ORDER BY $sortkey $sortto ");
+// }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -35,13 +52,14 @@
         <a href="">Lihat Semua</a>
       </div>
       <div class="barang-section">
+        <?php foreach ($result as $data) : ?>
         <div class="card-barang">
-          <img src="images/laptop.jpg" alt="laptop" class="image-card">
+          <img src="<?= $data['gambar'] ?>" alt="<?= $data['nama'] ?>" class="image-card">
           <div class="keterangan">
             <div class="container-nama">
-              <p class="nama-barang">Laptop Bagus</p>
+              <p class="nama-barang"><?= $data['nama']?></p>
             </div>
-            <p class="harga">Rp. 1.000.000</p>
+            <p class="harga">Rp. <?= $data['harga']?></p>
             <div class="lokasi">
               <img src="images/icon_checked.png" alt="checked" class="icon">
               <span class="detail-barang">Kota Samarinda</span>
@@ -52,12 +70,7 @@
             </div>
           </div>
         </div>
-        <div class="card-barang"></div>
-        <div class="card-barang"></div>
-        <div class="card-barang"></div>
-        <div class="card-barang"></div>
-        <div class="card-barang"></div>
-        <div class="card-barang"></div>
+        <?php endforeach; ?>
       </div>
     </div>
     <!-- akhir konten -->
@@ -139,13 +152,14 @@
         <a href="">Lihat Semua</a>
       </div>
       <div class="semua-barang-section">
+      <?php foreach ($result as $data) : ?>
         <div class="card-barang">
-          <img src="images/laptop.jpg" alt="laptop" class="image-card">
+          <img src="<?= $data['gambar'] ?>" alt="<?= $data['nama'] ?>" class="image-card">
           <div class="keterangan">
             <div class="container-nama">
-              <p class="nama-barang">Laptop Bagus</p>
+              <p class="nama-barang"><?= $data['nama']?></p>
             </div>
-            <p class="harga">Rp. 1.000.000</p>
+            <p class="harga">Rp. <?= $data['harga']?></p>
             <div class="lokasi">
               <img src="images/icon_checked.png" alt="checked" class="icon">
               <span class="detail-barang">Kota Samarinda</span>
@@ -156,15 +170,7 @@
             </div>
           </div>
         </div>
-        <div class="card-barang"></div>
-        <div class="card-barang"></div>
-        <div class="card-barang"></div>
-        <div class="card-barang"></div>
-        <div class="card-barang"></div>
-        <div class="card-barang"></div>
-        <div class="card-barang"></div>
-        <div class="card-barang"></div>
-        <div class="card-barang"></div>
+        <?php endforeach; ?>
       </div>
     </div>
     <!-- akhir konten -->
