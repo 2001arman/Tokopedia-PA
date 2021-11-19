@@ -116,6 +116,7 @@
   margin-right: 10px;
   margin-bottom: 7px;
   flex: none;
+  cursor: pointer;
   /* background-color: black; */
 }
 

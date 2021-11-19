@@ -20,7 +20,7 @@ if (mysqli_num_rows($result)=== 1) {
 
     if (password_verify($password, $row['password'])) {
         $_SESSION['login'] = true;
-        header("Location: index.php");
+        header("Location: user-page/main_page.php");
         exit;
     }
 }
