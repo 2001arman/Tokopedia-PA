@@ -21,6 +21,11 @@ if (isset($_POST['register'])){
     $username = $_POST['username'];
     $password = $_POST['password'];
     $cpassword = $_POST["cpassword"];
+    $nama = $_POST["nama"];
+    $alamat = $_POST["alamat"];
+    $no_hp = $_POST["no_hp"];
+    $keranjang = $_POST["username"];
+    $riwayat = $_POST["username"];
 
 if ($password === $cpassword){
     $password = password_hash($password, PASSWORD_DEFAULT);
@@ -37,6 +42,8 @@ if ($password === $cpassword){
         $result = mysqli_query($conn, $sql);
 
         if(mysqli_affected_rows($conn) > 0) {
+            $sql = "INSERT INTO details_user VALUES('$username','$nama','$alamat','$no_hp','$keranjang','$riwayat')";
+            $result = mysqli_query($conn, $sql);
             echo "<script>
             alert('Registrasi Telah Berhasil');
             document.location.href = 'login.php'
@@ -77,8 +84,8 @@ if ($password === $cpassword){
             <label for="alamat"><b>Alamat</b></label>
                 <input type="text" placeholder="Masukkkan Alamat" name="alamat" id="alamat" required>
 
-            <label for="nohp"><b>No.Hp</b></label>
-                <input type="text" placeholder="Masukkkan No.HP" name="nohp" id="nohp" required>
+            <label for="no_hp"><b>No.Hp</b></label>
+                <input type="text" placeholder="Masukkkan No.HP" name="no_hp" id="no_hp" required>
 
             <label for="email"><b>Email</b></label>
                 <input type="text" placeholder="Masukkkan email" name="email" id="email" required>

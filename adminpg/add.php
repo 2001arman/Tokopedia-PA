@@ -8,7 +8,10 @@ if (isset($_POST["submit"])) {
     $harga = htmlspecialchars($_POST['harga']);
     $gambar = htmlspecialchars($_POST['gambar']);
     $kategori = htmlspecialchars($_POST['kategori']);
-    $conn->query("INSERT INTO barang VALUES ('', '$nama','$desc','$stok','$harga','$gambar', '$kategori')");
+    $rating = htmlspecialchars($_POST['rating']);
+    $terjual = htmlspecialchars($_POST['terjual']);
+    $lokasi = htmlspecialchars($_POST['lokasi']);
+    $conn->query("INSERT INTO barang VALUES ('','$nama','$desc','$stok','$harga','$gambar','$kategori','$rating','$terjual','$lokasi')");
     
     if ($conn) {
         echo "<script>
@@ -29,38 +32,70 @@ if (isset($_POST["submit"])) {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="style.css" />
+    <style type="text/css">
+        td{
+            border: 0;
+            padding: 5px 10px;
+        }
+    </style>
     <title>Tambah Data</title>
 </head>
 <body>
     <div id="wrapper">
     <form action="#" method="POST">
-    <div class="inputan">
-    <label for="name">Nama :</label>
-    <input type="text" name="name" ><br>
+    <table id="inputan">
+    <tr>
+    <td><label for="name">Nama :</label></td>
+    <td><input type="text" name="name" ></td>
+    </tr>
 
-    <label for="desc">Deskripsi :</label>
-    <input type="text" name="desc" ><br>
+    <tr>
+    <td><label for="desc">Deskripsi :</label></td>
+    <td><textarea name="desc" rows="10" cols="100"></textarea></td>
+    </tr>
+    
+    <tr>
+    <td><label for="stok">Stok :</label></td>
+    <td><input type="number" name="stok" ></td>
+    </tr>
 
-    <label for="stok">Stok :</label>
-    <input type="text" name="stok" ><br>
+    <tr>
+    <td><label for="harga">Harga :</label></td>
+    <td><input type="number" name="harga" ></td>
+    </tr>
 
-    <label for="harga">Harga :</label>
-    <input type="number" name="harga" ><br>
+    <tr>
+    <td><label for="gambar">File Gambar :</label></td>
+    <td><input type="text" name="gambar" ></td>
+    </tr>
 
-    <p>
-    <label for="gambar">File Gambar :</label>
-    <input type="text" name="gambar" >Masukkan URL Gambar</p><br>
-
-    <p>Kategori:
-      <select name='kategori'>
+    <tr>
+    <td><label for="kategori">Kategori:</label></td>
+      <td><select name='kategori'>
         <option value='Sepatu'>Sepatu</option>
         <option value='Baju'>Baju</option>
         <option value='Celana'>Celana</option>
-      </select>
-      </p>
-      <button type="submit" class="btn3" name="submit">Submit</button>
-      <button class="btn1"><a href="index.php">Kembali</a></button>
+      </select></td>
+    </tr>
+
+    <tr>
+    <td><label for="rating">Rating :</label></td>
+    <td><input type="number" name="rating" step="0.1" min="0.1" max="5"></td>
+    </tr>
+
+    <tr>
+    <td><label for="terjual">Terjual :</label></td>
+    <td><input type="number" name="terjual" ></td>
+    </tr>
+
+    <tr>
+    <td><label for="lokasi">Lokasi :</label></td>
+    <td><input type="text" name="lokasi" ></td>
+    </tr>
+    </table>
     </div>
+      <button type="submit" class="btn4" name="submit">Submit</button>
+      <button class="btn1"><a href="index.php">Kembali</a></button>
     </form>
     </div>
 </body>

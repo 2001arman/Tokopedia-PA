@@ -1,8 +1,10 @@
 <?php
 
-  require 'adminpg/conn.php';
+  require '../adminpg/conn.php';
 
-  $result = query("SELECT * FROM barang WHERE kategori = 'celana'");
+  $semuaBarang = query("SELECT * FROM barang");
+  $dataCelana = query("SELECT * FROM barang WHERE kategori = 'celana'");
+  $dataSepatu = query("SELECT * FROM barang WHERE kategori = 'sepatu'");
 //     if (isset($_POST["cari"])) {
 //         $by = ($_POST['by']);
 //         $result = search($_POST['search'], $by);
@@ -21,7 +23,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/main-page.css" />
+    <link rel="stylesheet" href="../css/main-page.css" />
     <!-- fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,14 +33,14 @@
   <body>
     <!-- navbar -->
     <div class="navbar">
-      <img src="images/logo.png" alt="logo" class="logo" />
+      <img src="../images/logo.png" alt="logo" class="logo" />
       <div class="jarak"></div>
       <div class="user">
-        <img src="images/icon_cart.png" alt="keranjang">
-        <img src="images/icon_bell.png" alt="keranjang">
-        <img src="images/icon_email.png" alt="keranjang">
+        <img src="../images/icon_cart.png" alt="keranjang">
+        <img src="../images/icon_bell.png" alt="keranjang">
+        <img src="../images/icon_email.png" alt="keranjang">
         <div class="divider"></div>
-        <img src="images/icon_avatar.png" alt="avatar" class="avatar">
+        <img src="../images/icon_avatar.png" alt="avatar" class="avatar">
         <span>Arman</span>
       </div>
     </div>
@@ -48,25 +50,25 @@
     <div class="margin"></div>
     <div class="container-konten">
       <div class="judul-section">
-        <h2>Elektronik Pilihan</h2>
+        <h2>Celana Pilihan</h2>
         <a href="">Lihat Semua</a>
       </div>
       <div class="barang-section">
-        <?php foreach ($result as $data) : ?>
+        <?php foreach ($dataCelana as $data) : ?>
         <div class="card-barang">
           <img src="<?= $data['gambar'] ?>" alt="<?= $data['nama'] ?>" class="image-card">
           <div class="keterangan">
             <div class="container-nama">
               <p class="nama-barang"><?= $data['nama']?></p>
             </div>
-            <p class="harga">Rp. <?= $data['harga']?></p>
+            <p class="harga">Rp. <?= number_format($data['harga'], '0', '.', '.')?></p>
             <div class="lokasi">
-              <img src="images/icon_checked.png" alt="checked" class="icon">
-              <span class="detail-barang">Kota Samarinda</span>
+              <img src="../images/icon_checked.png" alt="checked" class="icon">
+              <span class="detail-barang"><?= $data['lokasi'] ?></span>
             </div>
             <div class="detail-rating">
-              <img src="images/icon_star.png" alt="star" class="icon">
-              <span class="detail-barang">4.9 | Terjual 2.2 rb</span>
+              <img src="../images/icon_star.png" alt="star" class="icon">
+              <span class="detail-barang"><?= $data['rating'] ?> | Terjual <?= $data['terjual'] ?></span>
             </div>
           </div>
         </div>
@@ -80,7 +82,7 @@
       <div class="judul-section">
         <h2>Lagi Trending, Nih</h2>
         <div class="refresh-trending">
-          <img src="images/icon_refresh.png" alt="star" class="icon-judul">
+          <img src="../images/icon_refresh.png" alt="star" class="icon-judul">
           <a href="">Muat Lainnya</a>
         </div>
       </div>
@@ -112,35 +114,32 @@
     <!-- akhir konten -->
 
     <!-- konten -->
+    <div class="margin"></div>
     <div class="container-konten">
       <div class="judul-section">
-        <h2>Baju Pilihan</h2>
+        <h2>Sepatu Pilihan</h2>
         <a href="">Lihat Semua</a>
       </div>
       <div class="barang-section">
+        <?php foreach ($dataSepatu as $data) : ?>
         <div class="card-barang">
-          <img src="images/laptop.jpg" alt="laptop" class="image-card">
+          <img src="<?= $data['gambar'] ?>" alt="<?= $data['nama'] ?>" class="image-card">
           <div class="keterangan">
             <div class="container-nama">
-              <p class="nama-barang">Laptop Bagus</p>
+              <p class="nama-barang"><?= $data['nama']?></p>
             </div>
-            <p class="harga">Rp. 1.000.000</p>
+            <p class="harga">Rp. <?= number_format($data['harga'], '0', '.', '.')?></p>
             <div class="lokasi">
-              <img src="images/icon_checked.png" alt="checked" class="icon">
+              <img src="../images/icon_checked.png" alt="checked" class="icon">
               <span class="detail-barang">Kota Samarinda</span>
             </div>
             <div class="detail-rating">
-              <img src="images/icon_star.png" alt="star" class="icon">
+              <img src="../images/icon_star.png" alt="star" class="icon">
               <span class="detail-barang">4.9 | Terjual 2.2 rb</span>
             </div>
           </div>
         </div>
-        <div class="card-barang"></div>
-        <div class="card-barang"></div>
-        <div class="card-barang"></div>
-        <div class="card-barang"></div>
-        <div class="card-barang"></div>
-        <div class="card-barang"></div>
+        <?php endforeach; ?>
       </div>
     </div>
     <!-- akhir konten -->
@@ -152,20 +151,20 @@
         <a href="">Lihat Semua</a>
       </div>
       <div class="semua-barang-section">
-      <?php foreach ($result as $data) : ?>
-        <div class="card-barang">
+      <?php foreach ($semuaBarang as $data) : ?>
+        <div class="card-barang" onclick="detailsPage(<?= $data['id'] ?>)">
           <img src="<?= $data['gambar'] ?>" alt="<?= $data['nama'] ?>" class="image-card">
           <div class="keterangan">
             <div class="container-nama">
               <p class="nama-barang"><?= $data['nama']?></p>
             </div>
-            <p class="harga">Rp. <?= $data['harga']?></p>
+            <p class="harga">Rp. <?=number_format($data['harga'], '0', '.', '.')?></p>
             <div class="lokasi">
-              <img src="images/icon_checked.png" alt="checked" class="icon">
+              <img src="../images/icon_checked.png" alt="checked" class="icon">
               <span class="detail-barang">Kota Samarinda</span>
             </div>
             <div class="detail-rating">
-              <img src="images/icon_star.png" alt="star" class="icon">
+              <img src="../images/icon_star.png" alt="star" class="icon">
               <span class="detail-barang">4.9 | Terjual 2.2 rb</span>
             </div>
           </div>
@@ -175,4 +174,9 @@
     </div>
     <!-- akhir konten -->
   </body>
+  <script>
+    function detailsPage(id) {
+      document.location.href = "detail.php?id="+id;
+    }
+  </script>
 </html>

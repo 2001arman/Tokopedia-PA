@@ -18,7 +18,7 @@ function query($query){
 
 function search($keyword, $by){
 	if ($by=='all') {
-		$query = "SELECT * FROM tbbarang WHERE 
+		$query = "SELECT * FROM barang WHERE 
 		nama LIKE '%$keyword%'
 		OR desc_brg LIKE '%$keyword%'
 		OR stok LIKE '%$keyword%'

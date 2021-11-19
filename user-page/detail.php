@@ -1,10 +1,12 @@
 <?php
-require 'conn.php';
+require '../detailcartpg/conn.php';
+
+$id = $_GET['id'];
 
 // $nama = $_GET["nama"];
-$result = query("SELECT * FROM barang WHERE nama='Sepatu Ventela'"); //DISINI JANGAN LUPA UBAH NAMA TABEL DAN VARIABEL YANG DITARIK
+$result = query("SELECT * FROM barang WHERE id='$id'"); //DISINI JANGAN LUPA UBAH NAMA TABEL DAN VARIABEL YANG DITARIK
 $result = $result[0];
-$trim = substr($result["desc_brg"],0,200);
+$trim = substr($result["deskripsi"],0,200);
 ?>
 
 <!DOCTYPE html>
@@ -12,7 +14,7 @@ $trim = substr($result["desc_brg"],0,200);
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="stylesheet" type="text/css" href="../css/style.css" />
     <title>Detail Page</title><!-- DISINI ISI PAKE VARIABEL YANG DIAMBIL -->
 </head>
 <body>
@@ -32,7 +34,7 @@ $trim = substr($result["desc_brg"],0,200);
     	</div>
         <!-- TAMPILAN TEKS DETAIL SHOW ALL -->
     	<div id="more">
-    		<?=nl2br(substr($result["desc_brg"],0,strlen($result["desc_brg"])))?>	
+    		<?=nl2br(substr($result["deskripsi"],0,strlen($result["deskripsi"])))?>	
     	</div>
     	<button onclick="readmore()" id="btn3">Selengkapnya</button>
     </p>

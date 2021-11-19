@@ -65,6 +65,9 @@ if (isset($_POST["sort"])) {
             <th>Harga</th>
             <th>Gambar</th>
             <th>Kategori</th>
+            <th>Ratingi</th>
+            <th>Terjual</th>
+            <th>Lokasi</th>
         </tr>
         </thead>
         <tbody>
@@ -72,9 +75,9 @@ if (isset($_POST["sort"])) {
             <?php foreach ($result as $tbl) : ?>
             <tr>
                 <td align="center"><?= $no; ?></td>
-                <td><?= $tbl["nama"]; ?></td>
-                <td>
-                <div class="namakelas" kode-id="<?= $no ?>">
+                <td class="fixtbl1"><?= $tbl["nama"]; ?></td>
+                <td class="fixtbl2">
+                <div class="dekripsi" kode-id="<?= $no ?>">
                 
                 
                 <!-- TAMPILAN TEKS DETAIL TRIMMED -->
@@ -96,10 +99,13 @@ if (isset($_POST["sort"])) {
                    <img src="<?= $tbl["gambar"]; ?>" width="100" height="100" >
                 </td>
                 <td><?= $tbl["kategori"]; ?></td>
+                <td><?= $tbl["rating"]; ?></td>
+                <td><?= $tbl["terjual"]; ?></td>
+                <td><?= $tbl["lokasi"]; ?></td>
                 <td>
                     <button type="submit" class="btn1" name="del"><a href="delete.php?nama=<?= $tbl["nama"]?>">Hapus</a></button>
 
-                    <button class="btn2"><a href="edit.php?nama=<?= $tbl["nama"]?>">Edit data</a></button>
+                    <button class="btn2"><a href="edit.php?id=<?= $tbl["id"]?>">Edit data</a></button>
                 </td>
             </tr>
             <?php $no++; ?>
@@ -113,9 +119,9 @@ if (isset($_POST["sort"])) {
 
     <script>
     function readmore(a) {
-        var trim = document.querySelector(`.namakelas[kode-id="${a}"] .trim`);
-        var more = document.querySelector(`.namakelas[kode-id="${a}"] .more`);
-        var btn = document.querySelector(`.namakelas[kode-id="${a}"] .btn`);
+        var trim = document.querySelector(`.dekripsi[kode-id="${a}"] .trim`);
+        var more = document.querySelector(`.dekripsi[kode-id="${a}"] .more`);
+        var btn = document.querySelector(`.dekripsi[kode-id="${a}"] .btn`);
 
         if (trim.style.display === "none") {
             trim.style.display = "inline";
