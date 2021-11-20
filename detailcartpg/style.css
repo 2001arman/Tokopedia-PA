@@ -1,0 +1,171 @@
+.btn4 > a{
+  text-decoration: none;
+  color: #18b50d;
+  font-family: arial;
+}
+
+*{
+	font-family: arial;
+	/*border: 1px solid black;*/
+}
+
+body{
+	min-height: 609px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+p {
+	font-size: 14px;
+}
+#det{
+	color: #6b6e6a;
+	font-size: 10px;	
+}
+h4{
+	color: #18b50d;
+}
+
+div{
+	padding: 10px;
+}
+
+#gambar{
+	border: 4px solid skyblue;
+	border-radius: 10px	;
+}
+
+#black{
+	color: black;
+}
+#box{
+	border: 1px solid #CCC;
+	border-radius: 10px	;	
+}
+
+#wrapper{
+	display: flex;
+}
+
+#detail{
+	width : 500px;
+}
+#more{
+	display: none;
+	font-size: 14px;
+}
+
+#trim{
+	display: inline;
+	font-size: 14px;
+}
+
+button{
+	font-weight: bold;
+}
+
+.qty{
+	padding:5px 15px;/*TOP/BOTTOM , LEFT/RIGHT*/
+	font-size: 16px;
+	color: #777;
+	border: 1px solid #777;
+	border-radius: 4px;
+	text-align: center;
+}
+.btn1{
+	display: block;
+	margin: auto;
+	color: white;
+	font-family: arial;
+	font-weight: bold;
+	background-color: #14e00d;
+	border: 0px;
+	border-radius: 12px;
+	padding: 12px;
+}
+
+.btn2min{
+	background-color: white;
+	padding:5px 15px;/*TOP/BOTTOM , LEFT/RIGHT*/
+	font-size: 16px;
+	color: #777;
+	border: 1px solid #777;
+	border-radius: 4px;
+	text-align: center;
+}
+.btn2plus{
+	background-color: white;
+	padding:5px 15px;/*TOP/BOTTOM , LEFT/RIGHT*/
+	font-size: 16px;
+	color: #777;
+	border: 1px solid #777;
+	border-radius: 4px;
+	text-align: center;
+}
+
+#btn3{
+	background-color: white;
+	border: 0;
+	padding: 0;	
+	color: #18b50d;
+}
+
+.btn4{
+	display: block;
+	margin: auto;
+	font-family: arial;
+	font-weight: bold;
+	background-color: white;
+	padding: 12px;
+	border: 2px solid #18b50d;
+	border-radius: 12px;
+	color: #18b50d;
+}
+
+#qty:focus{
+	color: #32c900;
+	border: 1px solid #32c900;
+	outline: 0;
+}
+.btn2min:hover{
+	color: #32c900;
+	border: 1px solid #32c900;
+}
+.btn2plus:hover{
+	color: #32c900;
+	border: 1px solid #32c900;
+}
+
+.btn1:hover{
+	background-color: #0b6e2f;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+#cleartd{
+	padding: 0px 30px;
+}
+
+.card{
+	border: 1px solid #707070;
+	display: flex;
+	margin: 5px;
+	border-radius: 10px;
+}
+.center{
+	display: flex;
+	padding: 0;
+	margin: 0;
+	align-items: center;
+}
+
+.bottom{
+	margin: 0;
+	display: flex;
+	padding: 0;
+	align-items: flex-end;
+}

@@ -16,10 +16,10 @@ function query($query){
 	return $rows;
 }
 
-function search($keyword, $by){
-	$query = "SELECT * FROM tbgame WHERE $by LIKE '%$keyword%'";
-	return query($query);
-}
+// function search($keyword, $by){
+// 	$query = "SELECT * FROM tbgame WHERE $by LIKE '%$keyword%'";
+// 	return query($query);
+// }
 
 
 ?>
