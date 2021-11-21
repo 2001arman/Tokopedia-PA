@@ -1,6 +1,7 @@
 <?php
 
   require '../adminpg/conn.php';
+  include('navbar.html');
 
   $semuaBarang = query("SELECT * FROM barang");
   $dataCelana = query("SELECT * FROM barang WHERE kategori = 'celana'");
@@ -31,20 +32,7 @@
     <title>Tokopedia</title>
   </head>
   <body>
-    <!-- navbar -->
-    <div class="navbar">
-      <img src="../images/logo.png" alt="logo" class="logo" />
-      <div class="jarak"></div>
-      <div class="user">
-        <img src="../images/icon_cart.png" alt="keranjang">
-        <img src="../images/icon_bell.png" alt="keranjang">
-        <img src="../images/icon_email.png" alt="keranjang">
-        <div class="divider"></div>
-        <img src="../images/icon_avatar.png" alt="avatar" class="avatar">
-        <span>Arman</span>
-      </div>
-    </div>
-    <!-- akhir navbar -->
+    
 
     <!-- konten -->
     <div class="margin"></div>
