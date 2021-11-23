@@ -1,3 +1,12 @@
+<?php
+  session_start();
+
+  $username = $_SESSION['user'];
+  $result = query("SELECT * FROM details_user WHERE username='$username'");
+  $result = $result[0];
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,11 +32,16 @@
           <img src="../images/icon_email.png" alt="keranjang">
           <div class="divider"></div>
           <img src="../images/icon_avatar.png" alt="avatar" class="avatar">
-          <span>Arman</span>
+          <span><div id="profile"><?= $result['nama'] ?></div></span>
         </div>
       </div>
       <!-- akhir navbar -->
 
-      
+      <script>
+        var nama = document.getElementById("profile");
+        nama.onClick = function () {
+          document.location.href = "profile.php";
+        }
+      </script>
 </body>
 </html>
