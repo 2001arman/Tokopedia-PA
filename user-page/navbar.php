@@ -24,7 +24,7 @@
 <body>
     <!-- navbar -->
     <div class="navbar">
-        <img src="../images/logo.png" alt="logo" class="logo" />
+        <img src="../images/logo.png" alt="logo" class="logo" onClick="mainPage()"/>
         <div class="jarak"></div>
         <div class="user">
           <img src="../images/icon_cart.png" alt="keranjang">
@@ -32,15 +32,14 @@
           <img src="../images/icon_email.png" alt="keranjang">
           <div class="divider"></div>
           <img src="../images/icon_avatar.png" alt="avatar" class="avatar">
-          <span><div id="profile"><?= $result['nama'] ?></div></span>
+          <a href="profile.php"><?= $result['nama'] ?></a>
         </div>
       </div>
       <!-- akhir navbar -->
 
       <script>
-        var nama = document.getElementById("profile");
-        nama.onClick = function () {
-          document.location.href = "profile.php";
+        function mainPage() {
+          document.location.href = "main_page.php";
         }
       </script>
 </body>

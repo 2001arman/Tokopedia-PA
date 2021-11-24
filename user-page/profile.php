@@ -7,6 +7,7 @@
   $username = $_SESSION['user'];
   $result = query("SELECT * FROM details_user WHERE username='$username'");
   $result = $result[0];
+  
 
 ?>
 
@@ -29,18 +30,7 @@
   </head>
   <body>
     <!-- navbar -->
-    <div class="navbar">
-      <img src="../images/logo.png" alt="logo" class="logo" />
-      <div class="jarak"></div>
-      <div class="user">
-        <img src="../images/icon_cart.png" alt="keranjang" />
-        <img src="../images/icon_bell.png" alt="keranjang" />
-        <img src="../images/icon_email.png" alt="keranjang" />
-        <div class="divider"></div>
-        <img src="../images/icon_avatar.png" alt="avatar" class="avatar" />
-        <span>Arman</span>
-      </div>
-    </div>
+    <?php include('navbar.php'); ?>
     <!-- akhir navbar -->
 
     <!-- konten -->
@@ -61,6 +51,7 @@
           <span><?= $result['alamat'] ?> <a href="#" id="btnAlamat">Ubah</a></span>
           <p>Nomor Handphone</p>
           <span><?= $result['no_hp'] ?> <a href="#" id="btnHP">Ubah</a></span>
+          <button class="logout">Logout</button>
         </div>
       </div>
     </div>
@@ -75,7 +66,7 @@
         <h3>Ubah Nama</h3>
         <p>Nama</p>
         <form action="" method="post">
-          <input type="text" name="nama" id="nama"><br>
+          <input type="text" name="nama" id="nama" value="<?= $result['nama'] ?>"><br>
           <button type="submit">Simpan</button>
         </form>
       </div>
@@ -91,7 +82,7 @@
         <h3>Ubah Alamat</h3>
         <p>Alamat</p>
         <form action="" method="post">
-          <input type="text" name="nama" id="nama"><br>
+          <input type="text" name="alamat" id="alamat" value="<?= $result['alamat'] ?>"><br>
           <button type="submit">Simpan</button>
         </form>
       </div>
@@ -104,10 +95,10 @@
       <!-- Modal content -->
       <div class="modal-content">
         <span class="close" id="closeHP">&times;</span>
-        <h3>Ubah HP</h3>
-        <p>HP</p>
+        <h3>Ubah Nomor Handphone</h3>
+        <p>Nomor Handphone</p>
         <form action="" method="post">
-          <input type="text" name="nama" id="nama"><br>
+          <input type="text" name="no_hp" id="no_hp" value="<?= $result['no_hp'] ?>"><br>
           <button type="submit">Simpan</button>
         </form>
       </div>
@@ -123,7 +114,7 @@
         <h3>Ubah Password</h3>
         <p>Password</p>
         <form action="" method="post">
-          <input type="text" name="nama" id="nama"><br>
+          <input type="text" name="password" id="password"><br>
           <button type="submit">Simpan</button>
         </form>
       </div>

@@ -56,6 +56,15 @@
   margin-right: 20px;
 }
 
+.navbar a{
+  display: inline;
+  text-decoration: none;
+  color: black;
+}
+
+.navbar .logo{
+  cursor: pointer;
+}
 /* konten */
 .margin {
   margin-top: 100px;
