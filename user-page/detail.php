@@ -41,6 +41,11 @@
     <title>Detail Page</title><!-- DISINI ISI PAKE VARIABEL YANG DIAMBIL -->
 </head>
 <body>
+
+    <!-- navbar -->
+    <?php include('navbar.php'); ?>
+    <!-- akhir navbar -->
+
     <div class="sticky">
     <img id="gambar" src="<?= $result["gambar"]; ?>" width="350" height="350"> 
     </div>
@@ -72,7 +77,7 @@
     <p>
         <input type="hidden" name="id" value="<?=$id?>">
         <button class="btn2min" type="button" onclick="decrement()">-</button>
-        <input type="number" class="qty" name="jumlah" value="1" min="1" max="<?= $result["stok"]; ?>">
+        <input type="number" class="qty" id="qty" name="jumlah" value="1" min="1" max="<?= $result["stok"]; ?>">
         <button class="btn2plus" type="button" onclick="increment()">+</button> 
         Stok : <b><?= $result["stok"]; ?></b>
     </p>
@@ -103,7 +108,7 @@
     </div>
 
 
-    <script>
+    <script>    
  	function readmore() {
  		var trim = document.getElementById('trim');
  		var more = document.getElementById('more');

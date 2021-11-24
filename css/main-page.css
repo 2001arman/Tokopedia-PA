@@ -62,6 +62,11 @@
   color: black;
 }
 
+.navbar .user .cart{
+  display: inline;
+  cursor: pointer;
+}
+
 .navbar .logo{
   cursor: pointer;
 }

@@ -30,7 +30,7 @@
         <img src="../images/logo.png" alt="logo" class="logo" onClick="mainPage()"/>
         <div class="jarak"></div>
         <div class="user">
-          <img src="../images/icon_cart.png" alt="keranjang">
+          <img src="../images/icon_cart.png" alt="keranjang" onClick="cartPage()" class="cart">
           <img src="../images/icon_bell.png" alt="keranjang">
           <img src="../images/icon_email.png" alt="keranjang">
           <div class="divider"></div>
@@ -43,6 +43,9 @@
       <script>
         function mainPage() {
           document.location.href = "main_page.php";
+        }
+        function cartPage() {
+          document.location.href = "cart.php"
         }
       </script>
 </body>

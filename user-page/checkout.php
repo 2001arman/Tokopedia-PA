@@ -1,7 +1,7 @@
 <?php
 require '../koneksi.php';
-
-$id = $_GET["id"];
+// $id = $_GET["id"];
+$id = 1;
 
 $select_sql = "SELECT * FROM tes WHERE id = $id";
 $result = mysqli_query($conn, $select_sql);

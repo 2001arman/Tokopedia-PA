@@ -8,6 +8,44 @@
   $result = query("SELECT * FROM details_user WHERE username='$username'");
   $result = $result[0];
   
+  if(isset($_POST['nama'])){
+    $nama = $_POST['nama'];
+    $sql = "UPDATE details_user SET nama = '$nama' WHERE username = '$username'";
+
+    $result = mysqli_query($conn, $sql);
+
+    if($result){
+      echo "<script> alert('data nama berhasil diubah'); document.location.href = 'profile.php'; </script>";
+    } else{
+      echo "<script> alert('data gagal ditambahkan'); </script>";
+    }
+  }
+
+  if(isset($_POST['alamat'])){
+    $alamat = $_POST['alamat'];
+    $sql = "UPDATE details_user SET alamat = '$alamat' WHERE username = '$username'";
+
+    $result = mysqli_query($conn, $sql);
+
+    if($result){
+      echo "<script> alert('data alamat berhasil diubah'); document.location.href = 'profile.php'; </script>";
+    } else{
+      echo "<script> alert('data gagal ditambahkan'); </script>";
+    }
+  }
+
+  if(isset($_POST['no_hp'])){
+    $no_hp = $_POST['no_hp'];
+    $sql = "UPDATE details_user SET no_hp = '$no_hp' WHERE username = '$username'";
+
+    $result = mysqli_query($conn, $sql);
+
+    if($result){
+      echo "<script> alert('data nomor hp berhasil diubah'); document.location.href = 'profile.php'; </script>";
+    } else{
+      echo "<script> alert('data gagal ditambahkan'); </script>";
+    }
+  }
 
 ?>
 
@@ -65,7 +103,7 @@
         <span class="close" id="closeNama">&times;</span>
         <h3>Ubah Nama</h3>
         <p>Nama</p>
-        <form action="" method="post">
+        <form action="profile.php" method="post">
           <input type="text" name="nama" id="nama" value="<?= $result['nama'] ?>"><br>
           <button type="submit">Simpan</button>
         </form>
@@ -81,7 +119,7 @@
         <span class="close" id="closeAlamat">&times;</span>
         <h3>Ubah Alamat</h3>
         <p>Alamat</p>
-        <form action="" method="post">
+        <form action="profile.php" method="post">
           <input type="text" name="alamat" id="alamat" value="<?= $result['alamat'] ?>"><br>
           <button type="submit">Simpan</button>
         </form>
@@ -97,7 +135,7 @@
         <span class="close" id="closeHP">&times;</span>
         <h3>Ubah Nomor Handphone</h3>
         <p>Nomor Handphone</p>
-        <form action="" method="post">
+        <form action="profile.php" method="post">
           <input type="text" name="no_hp" id="no_hp" value="<?= $result['no_hp'] ?>"><br>
           <button type="submit">Simpan</button>
         </form>
@@ -113,7 +151,7 @@
         <span class="close" id="closePassword">&times;</span>
         <h3>Ubah Password</h3>
         <p>Password</p>
-        <form action="" method="post">
+        <form action="profile.php" method="post">
           <input type="text" name="password" id="password"><br>
           <button type="submit">Simpan</button>
         </form>
