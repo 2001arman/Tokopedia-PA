@@ -1,9 +1,12 @@
 <?php
-  session_start();
+   if(!isset($_SESSION)) 
+   { 
+       session_start(); 
+   } 
 
   $username = $_SESSION['user'];
-  $result = query("SELECT * FROM details_user WHERE username='$username'");
-  $result = $result[0];
+  $user = query("SELECT * FROM details_user WHERE username='$username'");
+  $user = $user[0];
 
 ?>
 
@@ -32,7 +35,7 @@
           <img src="../images/icon_email.png" alt="keranjang">
           <div class="divider"></div>
           <img src="../images/icon_avatar.png" alt="avatar" class="avatar">
-          <a href="profile.php"><?= $result['nama'] ?></a>
+          <a href="profile.php"><?= $user['nama'] ?></a>
         </div>
       </div>
       <!-- akhir navbar -->

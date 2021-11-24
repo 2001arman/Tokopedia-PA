@@ -1,7 +1,8 @@
 <?php 
-	require 'conn.php';
-	// $nama = $_GET["nama"];
-	$result = query("SELECT * FROM cart WHERE iduser='ozan12'"); //DISINI JANGAN LUPA UBAH NAMA TABEL DAN VARIABEL YANG DITARIK
+	session_start();
+	require '../adminpg/conn.php';
+	$nama = $_SESSION['user'];
+	$result = query("SELECT * FROM cart WHERE iduser='$nama'"); //DISINI JANGAN LUPA UBAH NAMA TABEL DAN VARIABEL YANG DITARIK
 	foreach ($result as $tbl):
 		$row = mysqli_query($conn, "SELECT * FROM barang WHERE id='$tbl[idbrg]'");
 		$hasil[] =mysqli_fetch_assoc($row);
@@ -13,7 +14,7 @@
  <head>
  	<meta charset="utf-8">
  	<meta name="viewport" content="width=device-width, initial-scale=1">
- 	<link rel="stylesheet" type="text/css" href="style.css">
+ 	<link rel="stylesheet" type="text/css" href="../css/detail.css">
  	<style type="text/css">
  		.qty{
  			border-radius: 30px;
@@ -46,6 +47,10 @@
  	<title>Keranjang Anda</title>
  </head>
  <body>
+	 <!-- navbar -->
+	 <?php include('navbar.php'); ?>
+    <!-- akhir navbar -->
+
  		<div>
  			<form action="" method="POST">
  				<?php $no=1;

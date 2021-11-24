@@ -1,12 +1,35 @@
 <?php
-require '../detailcartpg/conn.php';
+    session_start();
+    
+    require '../adminpg/conn.php';
+    $iduser= $_SESSION['user'];//jangan lupa diubah jadi _POST
+    $id = $_GET['id']; //jangan lupa diubah jadi _POST
+    $duplikat = false;
+    $result = query("SELECT * FROM barang WHERE id='$id'"); //DISINI JANGAN LUPA UBAH NAMA TABEL DAN VARIABEL YANG DITARIK
+    $check = mysqli_query($conn, "SELECT * FROM `cart` WHERE `idbrg` = $id AND `iduser` LIKE '$iduser'");//jangan lupa disini ubah idusernya
+    if(null !==(mysqli_fetch_assoc($check))){
+        $duplikat=true;
+    }
+    $result = $result[0];
+    $trim = substr($result["deskripsi"],0,200);
+    if (isset($_POST["submit"])) {
+        $stok = htmlspecialchars($_POST['jumlah']);
+        $idBarang = $_POST['id'];
+        $conn->query("INSERT INTO cart (`idbrg`, `iduser`, `stok`) VALUES ('$idBarang','$iduser','$stok')");
 
-$id = $_GET['id'];
+        if ($conn) {
+            echo "<script>
+                alert('Data berhasil ditambahkan!');
+                document.location.href = 'detail.php?id=$idBarang';
+            </script>";
+        } else {
+            echo "<script>
+                alert('Data gagal ditambahkan!');
+                document.location.href = 'detail.php?id=$idBarang';
+            </script>";
+        }
 
-// $nama = $_GET["nama"];
-$result = query("SELECT * FROM barang WHERE id='$id'"); //DISINI JANGAN LUPA UBAH NAMA TABEL DAN VARIABEL YANG DITARIK
-$result = $result[0];
-$trim = substr($result["deskripsi"],0,200);
+        }
 ?>
 
 <!DOCTYPE html>
@@ -14,19 +37,19 @@ $trim = substr($result["deskripsi"],0,200);
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="../css/style.css" />
+    <link rel="stylesheet" type="text/css" href="../css/detail.css" />
     <title>Detail Page</title><!-- DISINI ISI PAKE VARIABEL YANG DIAMBIL -->
 </head>
 <body>
-    <div id="wrapper">
-	<div>
-    <img id="gambar" src="<?= $result["gambar"]; ?>"> 
+    <div class="sticky">
+    <img id="gambar" src="<?= $result["gambar"]; ?>" width="350" height="350"> 
     </div>
 
     <div id="detail">
-    <h1><?= $result["nama"]; ?></h1>
-    <h3>Rp. <?= $result["harga"]; ?></h3>
-    <h4>Detail Produk</h4>
+    <h3 style="margin-bottom: 5px"><?= $result["nama"]; ?></h3>
+    <p style="font-size: 14px">Terjual <?= $result["terjual"]; ?> | <img src="../images/icon_star.png" alt="star" class="icon"><?= $result["rating"]; ?></p><br>
+    <h2>Rp. <?= $result["harga"]; ?></h2><br>
+    <h4>Detail Produk</h4><br>
     <p>
         <!-- TAMPILAN TEKS DETAIL TRIMMED -->
     	<div id="trim">
@@ -40,30 +63,43 @@ $trim = substr($result["deskripsi"],0,200);
     </p>
     </div>
 
-    <div id="box">
+    <div class="sticky" id="box">
     <h4 id="black">Atur jumlah barang pesanan</h4>
-    <form action="#" method="POST">
+    <form action="detail.php" method="POST">
+    <div id="box2">
     <!-- DISINI CODING BUTTON INCREMENT &DECREMENT -->
+    <div>
     <p>
+        <input type="hidden" name="id" value="<?=$id?>">
         <button class="btn2min" type="button" onclick="decrement()">-</button>
-        <input type="number" id="qty" name="jumlah" value="1" min="1" max="<?= $result["stok"]; ?>">
+        <input type="number" class="qty" name="jumlah" value="1" min="1" max="<?= $result["stok"]; ?>">
         <button class="btn2plus" type="button" onclick="increment()">+</button> 
         Stok : <b><?= $result["stok"]; ?></b>
     </p>
-    
-    <!-- PERHITUNGAN TOTAL PEMBELIAN -->
     <p id="det">Max. pembelian <?= $result["stok"]; ?> pcs</p>
+    </div>
+    <div>
+    <!-- PERHITUNGAN TOTAL PEMBELIAN -->
     <table>
         <tr>
             <td><p>Subtotal</p></td>
             <td id="cleartd">:</td>
-            <td id="total"><b>Rp. <?= $result["harga"] ?></b></td>
+            <td><b>Rp.</b><b id="total"><?= $result["harga"] ?></b></td>
         </tr>
     </table>
+    <br>
     <!-- BUTTON +KERANJANG -->
+    <?php if($duplikat==true){ ?>
+    <button type="button" class="btn4">SUDAH ADA</button>
+    <?php } 
+    if ($duplikat==false) {?>
     <button type="submit" class="btn1" name="submit">+ Keranjang</button>
-    </form> 
+    <?php } ?>
+    <br>
+    <button type="button" class="btn4" name="beli"><a href="cart.php">Beli</a></button>
     </div>
+    </div>
+    </form> 
     </div>
 
 
