@@ -99,12 +99,11 @@ if (isset($_POST["sort"])) {
                    <img src="<?= $tbl["gambar"]; ?>" width="100" height="100" >
                 </td>
                 <td><?= $tbl["kategori"]; ?></td>
-                <td><?= $tbl["rating"]; ?></td>
+                <td><img src="../images/icon_star.png" alt="star" class="icon"><?= $tbl["rating"]; ?></td>
                 <td><?= $tbl["terjual"]; ?></td>
                 <td><?= $tbl["lokasi"]; ?></td>
                 <td>
-                    <button type="submit" class="btn1" name="del"><a href="delete.php?nama=<?= $tbl["nama"]?>">Hapus</a></button>
-
+                    <button type="submit" class="btn1" name="del"><a href="delete.php?id=<?= $tbl["id"]?>" onclick="return confirm('Yakin ingin MENGHAPUS DATA?');">Hapus</a></button>
                     <button class="btn2"><a href="edit.php?id=<?= $tbl["id"]?>">Edit data</a></button>
                 </td>
             </tr>

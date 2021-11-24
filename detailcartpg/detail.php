@@ -1,7 +1,7 @@
 <?php
 require 'conn.php';
 $iduser= 'ozan12';//jangan lupa diubah jadi _POST
-$id = 4;//jangan lupa diubah jadi _POST
+$id = 2;//jangan lupa diubah jadi _POST
 $duplikat=false;
 $result = query("SELECT * FROM barang WHERE id='$id'"); //DISINI JANGAN LUPA UBAH NAMA TABEL DAN VARIABEL YANG DITARIK
 $check = mysqli_query($conn, "SELECT * FROM `cart` WHERE `idbrg` = $id AND `iduser` LIKE '$iduser'");//jangan lupa disini ubah idusernya
@@ -27,6 +27,7 @@ if (isset($_POST["submit"])) {
     }
 
     }
+    require '../user-page/navbar.html';
 ?>
 
 <!DOCTYPE html>
@@ -38,15 +39,15 @@ if (isset($_POST["submit"])) {
     <title>Detail Page</title><!-- DISINI ISI PAKE VARIABEL YANG DIAMBIL -->
 </head>
 <body>
-    <div id="wrapper">
-	<div>
+    <div class="sticky">
     <img id="gambar" src="<?= $result["gambar"]; ?>" width="350" height="350"> 
     </div>
 
     <div id="detail">
-    <h1><?= $result["nama"]; ?></h1>
-    <h3>Rp. <?= $result["harga"]; ?></h3>
-    <h4>Detail Produk</h4>
+    <h3 style="margin-bottom: 5px"><?= $result["nama"]; ?></h3>
+    <p style="font-size: 14px">Terjual <?= $result["terjual"]; ?> | <img src="../images/icon_star.png" alt="star" class="icon"><?= $result["rating"]; ?></p><br>
+    <h2>Rp. <?= $result["harga"]; ?></h2><br>
+    <h4>Detail Produk</h4><br>
     <p>
         <!-- TAMPILAN TEKS DETAIL TRIMMED -->
     	<div id="trim">
@@ -60,19 +61,22 @@ if (isset($_POST["submit"])) {
     </p>
     </div>
 
-    <div id="box">
+    <div class="sticky" id="box">
     <h4 id="black">Atur jumlah barang pesanan</h4>
     <form action="detail.php" method="POST">
+    <div id="box2">
     <!-- DISINI CODING BUTTON INCREMENT &DECREMENT -->
+    <div>
     <p>
         <button class="btn2min" type="button" onclick="decrement()">-</button>
-        <input type="number" id="qty" name="jumlah" value="1" min="1" max="<?= $result["stok"]; ?>">
+        <input type="number" class="qty" name="jumlah" value="1" min="1" max="<?= $result["stok"]; ?>">
         <button class="btn2plus" type="button" onclick="increment()">+</button> 
         Stok : <b><?= $result["stok"]; ?></b>
     </p>
-    
-    <!-- PERHITUNGAN TOTAL PEMBELIAN -->
     <p id="det">Max. pembelian <?= $result["stok"]; ?> pcs</p>
+    </div>
+    <div>
+    <!-- PERHITUNGAN TOTAL PEMBELIAN -->
     <table>
         <tr>
             <td><p>Subtotal</p></td>
@@ -80,6 +84,7 @@ if (isset($_POST["submit"])) {
             <td><b>Rp.</b><b id="total"><?= $result["harga"] ?></b></td>
         </tr>
     </table>
+    <br>
     <!-- BUTTON +KERANJANG -->
     <?php if($duplikat==true){ ?>
     <button type="button" class="btn4">SUDAH ADA</button>
@@ -87,9 +92,11 @@ if (isset($_POST["submit"])) {
     if ($duplikat==false) {?>
     <button type="submit" class="btn1" name="submit">+ Keranjang</button>
     <?php } ?>
+    <br>
     <button type="button" class="btn4" name="beli"><a href="cart.php">Beli</a></button>
-    </form> 
     </div>
+    </div>
+    </form> 
     </div>
 
 

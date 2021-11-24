@@ -1,8 +1,8 @@
 <?php
 require 'conn.php';
 
-$nama = $_GET['nama'];
-$conn->query("DELETE FROM barang WHERE nama='$nama'");
+$id = $_GET['id'];
+$conn->query("DELETE FROM barang WHERE id='$id'");
 
 if ($conn) {
     echo "<script>

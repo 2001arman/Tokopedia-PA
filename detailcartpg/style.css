@@ -1,19 +1,14 @@
-.btn4 > a{
-  text-decoration: none;
-  color: #18b50d;
-  font-family: arial;
-}
-
 *{
 	font-family: arial;
 	/*border: 1px solid black;*/
 }
 
 body{
-	min-height: 609px;
+	min-height: 500px;
 	display: flex;
-	align-items: center;
-	justify-content: center;
+	align-items: flex-start;
+	justify-content: space-around;
+	margin-top: 80px;
 }
 
 p {
@@ -42,15 +37,34 @@ div{
 #box{
 	border: 1px solid #CCC;
 	border-radius: 10px	;	
+	min-height: 300px;
+}
+
+#box2{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	min-height: 300px;
 }
 
 #wrapper{
+	margin-top: 80px;
+	width: 100%;
 	display: flex;
+	justify-content: space-around;
+	overflow: auto;
 }
 
 #detail{
 	width : 500px;
+	margin-top: 20px;
 }
+
+.sticky {
+  position: sticky;
+  top: 120px;
+}
+
 #more{
 	display: none;
 	font-size: 14px;
@@ -83,6 +97,7 @@ button{
 	border: 0px;
 	border-radius: 12px;
 	padding: 12px;
+	width: 100%;
 }
 
 .btn2min{
@@ -121,9 +136,16 @@ button{
 	border: 2px solid #18b50d;
 	border-radius: 12px;
 	color: #18b50d;
+	width: 100%;
 }
 
-#qty:focus{
+.btn4 > a{
+  text-decoration: none;
+  color: #18b50d;
+  font-family: arial;
+}
+
+.qty:focus{
 	color: #32c900;
 	border: 1px solid #32c900;
 	outline: 0;
@@ -168,4 +190,10 @@ input::-webkit-inner-spin-button {
 	display: flex;
 	padding: 0;
 	align-items: flex-end;
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+  margin-right: 5px;
 }
