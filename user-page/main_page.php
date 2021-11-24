@@ -6,6 +6,8 @@
   $semuaBarang = query("SELECT * FROM barang");
   $dataCelana = query("SELECT * FROM barang WHERE kategori = 'celana'");
   $dataSepatu = query("SELECT * FROM barang WHERE kategori = 'sepatu'");
+  $dataBaju = query("SELECT * FROM barang WHERE kategori = 'baju'");
+  $dataElektronik = query("SELECT * FROM barang WHERE kategori = 'elektronik'");
 //     if (isset($_POST["cari"])) {
 //         $by = ($_POST['by']);
 //         $result = search($_POST['search'], $by);
@@ -37,7 +39,7 @@
     <?php include('navbar.php'); ?>
     <!-- akhir navbar -->
 
-    <!-- konten -->
+    <!-- konten celana-->
     <div class="margin"></div>
     <div class="container-konten">
       <div class="judul-section">
@@ -46,7 +48,7 @@
       </div>
       <div class="barang-section">
         <?php foreach ($dataCelana as $data) : ?>
-        <div class="card-barang">
+        <div class="card-barang" onclick="detailsPage(<?= $data['id'] ?>)">
           <img src="<?= $data['gambar'] ?>" alt="<?= $data['nama'] ?>" class="image-card">
           <div class="keterangan">
             <div class="container-nama">
@@ -66,7 +68,7 @@
         <?php endforeach; ?>
       </div>
     </div>
-    <!-- akhir konten -->
+    <!-- akhir konten celana-->
 
     <!-- konten trending -->
     <div class="container-trending">
@@ -79,33 +81,77 @@
       </div>
       <div class="barang-section">
         <div class="card-trending">
-          <img src="https://images.tokopedia.net/img/cache/200-square/VqbcmM/2021/5/7/6321290f-7a3a-4ad5-8924-fec5fe374ebe.jpg.webp?ect=4g" alt="" class="image-trending">
+          <img src="<?= $dataCelana[2]['gambar']?>" alt="celana" class="image-trending">
           <div class="keterangan">
-            <p class="nama">Rtx 3080</p>
-            <span class="jumlah">4rb Produk</span>
+            <p class="nama"><?= $dataCelana[2]['nama'] ?></p>
+            <span class="jumlah"><?= $dataCelana[2]['stok'] ?> Produk</span>
           </div>
         </div>
-        <div class="card-trending"></div>
-        <div class="card-trending"></div>
-        <div class="card-trending"></div>
-        <div class="card-trending"></div>
-        <div class="card-trending"></div>
-        <div class="card-trending"></div>
-        <div class="card-trending"></div>
+        <div class="card-trending">
+          <img src="<?= $dataSepatu[7]['gambar']?>" alt="Sepatu" class="image-trending">
+          <div class="keterangan">
+            <p class="nama"><?= $dataSepatu[7]['nama'] ?></p>
+            <span class="jumlah"><?= $dataSepatu[7]['stok'] ?> Produk</span>
+          </div>
+        </div>
+        <div class="card-trending">
+          <img src="<?= $dataBaju[1]['gambar']?>" alt="Baju" class="image-trending">
+          <div class="keterangan">
+            <p class="nama"><?= $dataBaju[1]['nama'] ?></p>
+            <span class="jumlah"><?= $dataBaju[1]['stok']?> Produk</span>
+          </div>
+        </div>
+        <div class="card-trending">
+          <img src="<?= $dataElektronik[4]['gambar']?>" alt="Elektronik" class="image-trending">
+          <div class="keterangan">
+            <p class="nama"><?= $dataElektronik[4]['nama'] ?></p>
+            <span class="jumlah"><?= $dataElektronik[4]['stok'] ?> Produk</span>
+          </div>
+        </div>
       </div>
     </div>
     <!-- akhir trending -->
 
+    <!-- konten baju-->
+    <div class="container-konten">
+      <div class="judul-section">
+        <h2>Baju Pilihan</h2>
+        <a href="">Lihat Semua</a>
+      </div>
+      <div class="barang-section">
+        <?php foreach ($dataBaju as $data) : ?>
+        <div class="card-barang" onclick="detailsPage(<?= $data['id'] ?>)">
+          <img src="<?= $data['gambar'] ?>" alt="<?= $data['nama'] ?>" class="image-card">
+          <div class="keterangan">
+            <div class="container-nama">
+              <p class="nama-barang"><?= $data['nama']?></p>
+            </div>
+            <p class="harga">Rp. <?= number_format($data['harga'], '0', '.', '.')?></p>
+            <div class="lokasi">
+              <img src="../images/icon_checked.png" alt="checked" class="icon">
+              <span class="detail-barang"><?= $data['lokasi'] ?></span>
+            </div>
+            <div class="detail-rating">
+              <img src="../images/icon_star.png" alt="star" class="icon">
+              <span class="detail-barang"><?= $data['rating'] ?> | Terjual <?= $data['terjual'] ?></span>
+            </div>
+          </div>
+        </div>
+        <?php endforeach; ?>
+      </div>
+    </div>
+    <!-- akhir konten baju-->
+
+    <!-- promo brand erigo -->
     <div class="container-konten">
       <div class="judul-section">
         <h2>Promo Brand Pilihan</h2>
       </div>
       <img src="https://images.tokopedia.net/img/WVCyGU/2021/11/11/9ba16f2a-71d5-49e1-a7c4-9f7901e2a724.jpg" alt="jumbotron" class="jumbotron">
     </div>
-    <!-- akhir konten -->
+    <!-- akhir konten erigo-->
 
-    <!-- konten -->
-    <div class="margin"></div>
+    <!-- konten sepatu-->
     <div class="container-konten">
       <div class="judul-section">
         <h2>Sepatu Pilihan</h2>
@@ -113,7 +159,7 @@
       </div>
       <div class="barang-section">
         <?php foreach ($dataSepatu as $data) : ?>
-        <div class="card-barang">
+        <div class="card-barang" onclick="detailsPage(<?= $data['id'] ?>)">
           <img src="<?= $data['gambar'] ?>" alt="<?= $data['nama'] ?>" class="image-card">
           <div class="keterangan">
             <div class="container-nama">
@@ -133,9 +179,48 @@
         <?php endforeach; ?>
       </div>
     </div>
-    <!-- akhir konten -->
+    <!-- akhir konten sepatu-->
 
-    <!-- konten -->
+    <!-- promo brand hemaviton -->
+    <div class="container-konten">
+      <div class="judul-section">
+        <h2>Promo Brand Pilihan</h2>
+      </div>
+      <img src="https://images.tokopedia.net/img/WVCyGU/2021/10/4/afc3489e-33b6-4bbb-a764-ce33a9ad5b3d.jpg" alt="jumbotron" class="jumbotron">
+    </div>
+    <!-- akhir konten hemaviton-->
+
+    <!-- konten elektronik-->
+    <div class="container-konten">
+      <div class="judul-section">
+        <h2>Elektronik Pilihan</h2>
+        <a href="">Lihat Semua</a>
+      </div>
+      <div class="barang-section">
+        <?php foreach ($dataElektronik as $data) : ?>
+        <div class="card-barang" onclick="detailsPage(<?= $data['id'] ?>)">
+          <img src="<?= $data['gambar'] ?>" alt="<?= $data['nama'] ?>" class="image-card">
+          <div class="keterangan">
+            <div class="container-nama">
+              <p class="nama-barang"><?= $data['nama']?></p>
+            </div>
+            <p class="harga">Rp. <?= number_format($data['harga'], '0', '.', '.')?></p>
+            <div class="lokasi">
+              <img src="../images/icon_checked.png" alt="checked" class="icon">
+              <span class="detail-barang">Kota Samarinda</span>
+            </div>
+            <div class="detail-rating">
+              <img src="../images/icon_star.png" alt="star" class="icon">
+              <span class="detail-barang">4.9 | Terjual 2.2 rb</span>
+            </div>
+          </div>
+        </div>
+        <?php endforeach; ?>
+      </div>
+    </div>
+    <!-- akhir konten elektronik-->
+
+    <!-- konten semua barang-->
     <div class="container-konten">
       <div class="judul-section">
         <h2>Semua Barang</h2>
@@ -163,7 +248,7 @@
         <?php endforeach; ?>
       </div>
     </div>
-    <!-- akhir konten -->
+    <!-- akhir konten semua barang-->
   </body>
   <script>
     function detailsPage(id) {

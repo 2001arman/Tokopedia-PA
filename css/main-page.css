@@ -84,7 +84,10 @@
 
 .container-konten .jumbotron{
   border-radius: 10px;
-  margin: 20px 0;
+  display: block;
+  margin: 20px auto 0;
+  width: 90%;
+  background-size: cover;
 }
 
 .container-konten .barang-section {
@@ -95,7 +98,7 @@
 }
 
 .container-konten .semua-barang-section{
-  width: 90%;
+  width: 100%;
   margin-top: 20px;
   display: flex;
   flex-wrap: wrap;
