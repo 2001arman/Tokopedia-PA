@@ -1,5 +1,15 @@
 <?php 
+	
 	session_start();
+	if(!empty($_POST['selector'])) {
+		$list[] = $_POST['selector'];
+    	if (isset($_POST["submit"])) {
+    		$_SESSION['list'] = $list;
+    		echo "<script>
+            document.location.href = 'checkout.php';
+        </script>";
+	}
+	}	
 	require '../adminpg/conn.php';
 	$nama = $_SESSION['user'];
 	$result = query("SELECT * FROM cart WHERE iduser='$nama'"); //DISINI JANGAN LUPA UBAH NAMA TABEL DAN VARIABEL YANG DITARIK
@@ -47,18 +57,19 @@
  	<title>Keranjang Anda</title>
  </head>
  <body>
-	 <!-- navbar -->
-	 <?php include('navbar.php'); ?>
+	<!-- navbar -->
+	<?php include('navbar.php'); ?>
     <!-- akhir navbar -->
-
+    	<form action="" method="POST">
+    	<div id="wrap">
  		<div>
- 			<form action="" method="POST">
+ 			
  				<?php $no=1;
  				foreach ($hasil as $tbl) : ?>
  				<div class="card" kode-id="<?= $no ?>">
 
  				<div class="center" style="flex-basis: 100px">
-	            <input type="checkbox" class="selector" name="selector" onchange="handleChange(this, '<?= $no ?>');">
+	            <input type="checkbox" class="selector" name="selector[]" value="<?= $tbl["id"]; ?>" onchange="handleChange(this, '<?= $no ?>');">
 	            </div>
 
 	            <div class="center" style="flex-basis: 100px">
@@ -72,9 +83,9 @@
 
 	        	<div class="bottom" style="flex-basis: 100px">
 	        	<!-- DISINI CODING BUTTON INCREMENT &DECREMENT -->
-			    	<p  class="center"><b>Rp.</b><b class="subtotal"><?= $result[$no-1]['stok']*$tbl["harga"]; ?></b>
+			    	<p class="center"><b class="subtotal">Rp<?= $result[$no-1]['stok']*$tbl["harga"]; ?></b>
 			        <button class="btn2min" type="button" onclick="decrement('<?= $no ?>')">-</button>
-			        <input type="number" class="qty" name="jumlah" value="<?= $result[$no-1]['stok'] ?>" min="1" onfocusout="calculate('<?= $no ?>')">
+			        <input type="number" class="qty" name="jumlah[]" value="<?= $result[$no-1]['stok'] ?>" min="1" onfocusout="calculate('<?= $no ?>')">
 			        <button class="btn2plus" type="button" onclick="increment('<?= $no ?>')">+</button></p>
 			 	</div>
 
@@ -82,7 +93,7 @@
 	            <?php 
 	            $no++;
 	             endforeach; ?>
- 			</form>
+ 			<!-- </form> -->
  		</div>
  	<div>
  		<h4 id="black">Ringkasan Belanja</h4>
@@ -91,51 +102,59 @@
         <tr>
             <td><p>Total Harga</p></td>
             <td id="cleartd">:</td>
-            <td id="total">0</td>
+            <td id="total">Rp 0,00</td>
         </tr>
     </table>
+    <!-- <form action="tes.php" method="POST"> -->
     <!-- BUTTON +KERANJANG -->
     <button type="submit" class="btn1" name="submit">Beli</button>
  	</div>
+ 	</div>
+ 	</form>
+
+
  	<script>
- 		var dftrharga = [];
+ 		var dftrharga = new Array(<?= $no ?>).fill(0);
  		
  		function handleChange(checkbox, a) {
  			var total = 0;
- 			dftrharga[a] = Number(document.querySelector(`.card[kode-id="${a}"] .subtotal`).innerHTML);
+ 			var val=document.querySelector(`.card[kode-id="${a}"] .qty`).value;
+ 			var harga=document.querySelector(`.card[kode-id="${a}"] .harga`).innerHTML;
+	      	dftrharga[a] = Number(val*harga);
 		    if(checkbox.checked == true){
 				for(i = 1; i <dftrharga.length; i++){
 				   total += dftrharga[i];
 				}
-			document.getElementById('total').innerHTML = total;
+			document.getElementById('total').innerHTML = Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR" }).format(total);
 		    }
 		    if(checkbox.checked == false){
 		    	dftrharga[a]=0;
 		    	for(i = 1; i <dftrharga.length; i++){
 				   total += dftrharga[i];
 				}
-		    	document.getElementById('total').innerHTML = total;
+		    	document.getElementById('total').innerHTML = Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR" }).format(total);
 		    }
 		}
  		function increment(a) {
 	      document.querySelector(`.card[kode-id="${a}"] .qty`).stepUp();
 	      var val=document.querySelector(`.card[kode-id="${a}"] .qty`).value;
 	      var harga=document.querySelector(`.card[kode-id="${a}"] .harga`).innerHTML;
-	      dftrharga[a] = Number(document.querySelector(`.card[kode-id="${a}"] .subtotal`).innerHTML = val*harga);
+	      dftrharga[a] = Number(val*harga);
+	      document.querySelector(`.card[kode-id="${a}"] .subtotal`).innerHTML = Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR" }).format(val*harga);
 	      var total = 0;
 	      var checkbox = document.querySelector(`.card[kode-id="${a}"] .selector`);
 	      if(checkbox.checked == true){
 				for(i = 1; i <dftrharga.length; i++){
 				   total += dftrharga[i];
 				}
-			document.getElementById('total').innerHTML = total;
+			document.getElementById('total').innerHTML = Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR" }).format(total);
 		    }
 		   if(checkbox.checked == false){
 		    	dftrharga[a]=0;
 		    	for(i = 1; i <dftrharga.length; i++){
 				   total += dftrharga[i];
 				}
-		    	document.getElementById('total').innerHTML = total;
+		    	document.getElementById('total').innerHTML = Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR" }).format(total);
 		    }
 	      
 	   }
@@ -143,41 +162,43 @@
 	      document.querySelector(`.card[kode-id="${a}"] .qty`).stepDown();
 	      var val=document.querySelector(`.card[kode-id="${a}"] .qty`).value;
 	      var harga=document.querySelector(`.card[kode-id="${a}"] .harga`).innerHTML;
-	      dftrharga[a] = Number(document.querySelector(`.card[kode-id="${a}"] .subtotal`).innerHTML = val*harga);
+	      dftrharga[a] = Number(val*harga);
+	      document.querySelector(`.card[kode-id="${a}"] .subtotal`).innerHTML = Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR" }).format(val*harga);
 	      var total = 0;
 	      var checkbox = document.querySelector(`.card[kode-id="${a}"] .selector`);
 	      if(checkbox.checked == true){
 				for(i = 1; i <dftrharga.length; i++){
 				   total += dftrharga[i];
 				}
-			document.getElementById('total').innerHTML = total;
+			document.getElementById('total').innerHTML = Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR" }).format(total);
 		    }
 		   if(checkbox.checked == false){
 		    	dftrharga[a]=0;
 		    	for(i = 1; i <dftrharga.length; i++){
 				   total += dftrharga[i];
 				}
-		    	document.getElementById('total').innerHTML = total;
+		    	document.getElementById('total').innerHTML = Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR" }).format(total);
 		    }
 	   }
 	   function calculate(a){
 	   	  var val=document.querySelector(`.card[kode-id="${a}"] .qty`).value;
 	      var harga=document.querySelector(`.card[kode-id="${a}"] .harga`).innerHTML;
-	      dftrharga[a] = Number(document.querySelector(`.card[kode-id="${a}"] .subtotal`).innerHTML = val*harga);
+	      dftrharga[a] = Number(val*harga);
+	      document.querySelector(`.card[kode-id="${a}"] .subtotal`).innerHTML = Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR" }).format(val*harga);
 	      var total = 0;
 	      var checkbox = document.querySelector(`.card[kode-id="${a}"] .selector`);
 	      if(checkbox.checked == true){
 				for(i = 1; i <dftrharga.length; i++){
 				   total += dftrharga[i];
 				}
-			document.getElementById('total').innerHTML = total;
+			document.getElementById('total').innerHTML = Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR" }).format(total);
 		    }
 		   if(checkbox.checked == false){
 		    	dftrharga[a]=0;
 		    	for(i = 1; i <dftrharga.length; i++){
 				   total += dftrharga[i];
 				}
-		    	document.getElementById('total').innerHTML = total;
+		    	document.getElementById('total').innerHTML = Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR" }).format(total);
 		    }
 	   }
 

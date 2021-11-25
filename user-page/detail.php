@@ -1,6 +1,5 @@
 <?php
     session_start();
-    
     require '../adminpg/conn.php';
     $iduser= $_SESSION['user'];//jangan lupa diubah jadi _POST
     $id = $_GET['id']; //jangan lupa diubah jadi _POST
@@ -38,7 +37,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="../css/detail.css" />
-    <title>Detail Page</title><!-- DISINI ISI PAKE VARIABEL YANG DIAMBIL -->
+    <title><?= $result["nama"]; ?></title><!-- DISINI ISI PAKE VARIABEL YANG DIAMBIL -->
 </head>
 <body>
 
@@ -52,8 +51,9 @@
 
     <div id="detail">
     <h3 style="margin-bottom: 5px"><?= $result["nama"]; ?></h3>
-    <p style="font-size: 14px">Terjual <?= $result["terjual"]; ?> | <img src="../images/icon_star.png" alt="star" class="icon"><?= $result["rating"]; ?></p><br>
-    <h2>Rp. <?= $result["harga"]; ?></h2><br>
+    <p style="font-size: 14px">Terjual <?= $result["terjual"]; ?> | <img src="../images/icon_star.png" alt="star" class="icon"><?= $result["rating"]; ?></p>
+    <p style="margin-top: 5px"><?= $result["lokasi"]; ?></p><br>
+    <h2>Rp. <?= number_format($result["harga"], '0', '.', '.'); ?></h2><br>
     <h4>Detail Produk</h4><br>
     <p>
         <!-- TAMPILAN TEKS DETAIL TRIMMED -->
@@ -89,7 +89,7 @@
         <tr>
             <td><p>Subtotal</p></td>
             <td id="cleartd">:</td>
-            <td><b>Rp.</b><b id="total"><?= $result["harga"] ?></b></td>
+            <td><b id="total">Rp.<?= number_format($result["harga"], '0', '.', '.') ?>,00</b></td>
         </tr>
     </table>
     <br>
@@ -129,12 +129,12 @@
    function increment() {
       document.getElementById('qty').stepUp();
       var val=document.getElementById('qty').value;
-      document.getElementById('total').innerHTML = val*<?= $result["harga"] ?>;
+      document.getElementById('total').innerHTML = Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR" }).format(val*<?= $result["harga"] ?>);
    }
    function decrement() {
       document.getElementById('qty').stepDown();
       var val=document.getElementById('qty').value;
-      document.getElementById('total').innerHTML = val*<?= $result["harga"] ?>;
+      document.getElementById('total').innerHTML = Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR" }).format(val*<?= $result["harga"] ?>);
    }
     </script>
 </body>

@@ -9,6 +9,8 @@ body{
 	align-items: flex-start;
 	justify-content: space-around;
 	margin-top: 80px;
+	width: 100%;
+  position: relative;
 }
 
 p {
@@ -46,15 +48,15 @@ div{
 	justify-content: space-between;
 	min-height: 300px;
 }
-
-#wrapper{
-	margin-top: 80px;
-	width: 100%;
+#wrap{
 	display: flex;
+  align-items: flex-start;
 	justify-content: space-around;
-	overflow: auto;
+  width: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
 }
-
 #detail{
 	width : 500px;
 	margin-top: 20px;
@@ -175,7 +177,7 @@ input::-webkit-inner-spin-button {
 .card{
 	border: 1px solid #707070;
 	display: flex;
-	margin: 5px;
+	margin: 20px;
 	border-radius: 10px;
 }
 .center{

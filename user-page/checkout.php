@@ -2,7 +2,8 @@
 require '../koneksi.php';
 // $id = $_GET["id"];
 $id = 1;
-
+session_start();
+var_dump($_SESSION['list']);
 $select_sql = "SELECT * FROM tes WHERE id = $id";
 $result = mysqli_query($conn, $select_sql);
 
