@@ -4,6 +4,8 @@ require '../koneksi.php';
 $id = 1;
 session_start();
 var_dump($_SESSION['list']);
+echo nl2br("\n");
+var_dump($_SESSION['jumlah']);
 $select_sql = "SELECT * FROM tes WHERE id = $id";
 $result = mysqli_query($conn, $select_sql);
 

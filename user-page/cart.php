@@ -1,16 +1,24 @@
 <?php 
-	
+	require '../adminpg/conn.php';
 	session_start();
 	if(!empty($_POST['selector'])) {
-		$list[] = $_POST['selector'];
+		$list[] = $_POST['selector']; //mengambil id yang dipilih dengan checkbox berupa array
+		$jumlah[] = $_POST['jumlah']; // mengambil seluruh jumlah barang array
     	if (isset($_POST["submit"])) {
+    		$idbrg[] = $_POST['id']; // mengambil seluruh id barang yang ada di keranjang
+    		$idbrg=$idbrg[0]; // membuat array manjadi satu dimensi
+    		$jumlah = $jumlah[0]; // membuat array manjadi satu dimensi
+    		$noo=0;
+    		foreach ($idbrg as $tbll) :
+				$conn->query("UPDATE cart SET stok='$jumlah[$noo]' WHERE idbrg='$tbll'");
+			$noo++;
+    		endforeach; 
     		$_SESSION['list'] = $list;
     		echo "<script>
             document.location.href = 'checkout.php';
         </script>";
 	}
 	}	
-	require '../adminpg/conn.php';
 	$nama = $_SESSION['user'];
 	$result = query("SELECT * FROM cart WHERE iduser='$nama'"); //DISINI JANGAN LUPA UBAH NAMA TABEL DAN VARIABEL YANG DITARIK
 	foreach ($result as $tbl):
@@ -66,8 +74,9 @@
  			
  				<?php $no=1;
  				foreach ($hasil as $tbl) : ?>
- 				<div class="card" kode-id="<?= $no ?>">
 
+ 				<div class="card" kode-id="<?= $no ?>">
+ 				<input type="hidden" name="id[]" value="<?= $tbl["id"]; ?>">
  				<div class="center" style="flex-basis: 100px">
 	            <input type="checkbox" class="selector" name="selector[]" value="<?= $tbl["id"]; ?>" onchange="handleChange(this, '<?= $no ?>');">
 	            </div>
@@ -92,7 +101,8 @@
 			    </div>
 	            <?php 
 	            $no++;
-	             endforeach; ?>
+	             endforeach; 
+	             ?>
  			<!-- </form> -->
  		</div>
  	<div>
