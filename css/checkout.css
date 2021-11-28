@@ -71,3 +71,21 @@ span.price {
     margin-bottom: 20px;
   }
 }
+
+.barang-section{
+  display: flex;
+}
+
+.barang-section .detail-barang{
+  width: 30%;
+}
+
+.detail-barang .judul-barang{
+  font-weight: bold;
+}
+
+.image-card{
+  width: 200px;
+  height: 200px;
+  margin-bottom: 20px;
+}

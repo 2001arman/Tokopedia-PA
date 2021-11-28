@@ -1,18 +1,17 @@
 <?php
-require '../koneksi.php';
+  require '../adminpg/conn.php';
 
-$id = 1;
+  session_start();
+  $username = $_SESSION['user'];
+  $list_barang = $_SESSION['list'];
+  $id_barang = $list_barang[0];
 
-$select_sql = "SELECT * FROM tes WHERE id = $id";
-$result = mysqli_query($conn, $select_sql);
+  $user = query("SELECT * FROM details_user WHERE username='$username'");
+  $user = $user[0];
 
-$tes = [];
 
-while ($row = mysqli_fetch_assoc($result)) {
-    $tes[] = $row;
-}
-$tes = $tes[0];
-
+  
+  
 
 ?>
 <!DOCTYPE html>
@@ -22,6 +21,7 @@ $tes = $tes[0];
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="checkout.css">
+    <link rel="stylesheet" href="../css/checkout.css">
     <title>tokopedia-pdf</title>
 </head>
 <body>
@@ -36,26 +36,54 @@ $tes = $tes[0];
             <hr>
             <input type="hidden"name="id" value="<?= $tes["id"]; ?>">
             <p>Tanggal Pengiriman</p>
-            <?php  echo date("j F Y, G:i");?></p>
+            <?php  echo date("j F Y");?></p>
             <hr>
-            <p> PENJUAL</p>
-            <?= $tes['supplier']; ?><br><br>
             <p> PEMBELI </p>
-            <?= $tes['nama'],' (Rumah)'; ?><br>
-            <?= $tes['nohp']; ?><br>
-            <?= $tes['alamat']; ?><br><br>
+            <?= $user['nama'],' (Rumah)'; ?><br>
+            <?= $user['no_hp']; ?><br>
+            <?= $user['alamat']; ?><br><br>
             <hr>
-            <p>Barang <span class="price" style="color:black"><?= $tes['barang']; ?></p>
-            <p>Total Belanja</p>   
-            <p>Ongkos Kirim</p>   
+            <p>Barang <span class="price" style="color:black"></p>
+            <?php foreach ($id_barang as $id) : ?>
+              <div class="barang-section">  
+                <?php
+                  $barang = [];
+                  $barang = query("SELECT * FROM barang WHERE id ='$id'");
+                  $barang = $barang[0];
+                  
+                  $cart = [];
+                  $cart = query("SELECT * FROM cart WHERE idbrg ='$id'");
+                  $cart = $cart[0];
+                  ?>
+                  <div class="detail-barang">
+                    <p class="judul-barang"><?= $barang['nama']; ?></p>
+                    <p>Harga: Rp.<?= number_format($barang['harga'], '0', '.', '.'); ?></p>
+                    <p>Jumlah Pesanan: <?= $cart['stok'] ?> barang</p>
+                  </div>
+                <img src="<?= $barang['gambar'] ?>" alt="<?= $barang['nama'] ?>" class="image-card">
+              </div>
+              <?php endforeach; ?>
             <p>Sistem Pembayaran <span class="price" style="color:black"><b>COD</b></span></p>  
             <hr> 
-              <p>Total Pembayaran <span class="price" style="color:black"><b>Rp.30.0000</b></span></p>      
+              <p>Total Pembayaran <span class="price" style="color:black"><b>Rp.<?= number_format($_SESSION['total_harga'], '0', '.', '.');?></b></span></p>      
           </div>
         </div>
       </form>
     </div>
 </div>
+<?php 
+foreach ($id_barang as $id) {
+  $cart = [];
+  $cart = query("SELECT * FROM cart WHERE idbrg ='$id'");
+  $cart = $cart[0];
+  $stok = $cart['stok'];
+  $tanggal = date("d-m-Y");
+  $conn->query("INSERT INTO transaksi VALUES ('','$username','$id','$stok','$tanggal')");
+  $conn->query("DELETE FROM cart WHERE idbrg='$id'");
+}
+$_SESSION['list'] = 0; 
+$_SESSION['total_harga'] = 0;
+?>
 <script >
     window.print();
 </script>
