@@ -51,7 +51,7 @@
           <div class="col-50">
             <h2>Checkout</h2>
             <h3>Alamat Pengiriman</h3>
-            <form action=""method="post">
+            <form action="cetak.php"method="post">
               <hr>
               <?= $user['nama'],' (Rumah)'; ?><br>
               <?= $user['no_hp']; ?><br>
@@ -76,6 +76,7 @@
                   $total_pesanan = $total_pesanan + $cart['stok'];
                   $harga_barang = $barang['harga'] * $cart['stok'];
                   $total_harga = $total_harga + $harga_barang;
+                  $_SESSION['total_harga'] = $total_harga;
                   ?>
                   <div class="detail-barang">
                     <p class="judul-barang"><?= $barang['nama']; ?></p>
