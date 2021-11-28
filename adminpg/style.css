@@ -6,14 +6,11 @@ a{
 
 body {
   font-size: 11.5pt;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
   min-height: 609px;
 }
 table {
   table-layout: fixed;
+  margin-top: 90px;
 }
 
 td{
@@ -27,12 +24,28 @@ th {
 	color: white;
 }
 
+#wrap{
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	justify-content: center;
+	align-items: center;
+}
 button{
+	font-weight: bold;
   border-radius: 10px;
   border: 0px;
   background-color: grey;
 	color: white;
 	padding: 10px;
+}
+
+.btn{
+	font-weight: bold;
+	background: rgba(0,0,0,0);
+	border: 0;
+	padding: 0;	
+	color: #25cc33;
 }
 
 .btn1{
@@ -46,21 +59,10 @@ button{
   padding: 15px 10px 15px 10px;
 }
 
-.btn{
-	font-weight: bold;
-	background: rgba(0,0,0,0);
-	border: 0;
-	padding: 0;	
-	color: #25cc33;
+#btn3{
+	background: #969c94;
+	color: white;
 }
-
-/*#btn3-2{
-	font-weight: bold;
-	background: rgba(0,0,0,0);
-	border: 0;
-	padding: 0;	
-	color: #fa2020;
-}*/
 
 .btn4{
   display: block;
@@ -69,16 +71,31 @@ button{
   padding: 15px 10px 15px 10px;
 }
 
+.btn:hover{
+	cursor: pointer;
+}
+
 .btn1:hover{
   background-color: #f5112b;
+  cursor: pointer;
 }
 
 .btn2:hover{
   background-color: #1128f7;
+  cursor: pointer;
+}
+
+.btn3:hover{
+	background-color: #abadaa;
+  cursor: pointer;
 }
 
 .btn4:hover{
   background-color: #31ff0d;
+  
+}
+label:hover{
+	cursor: pointer;
 }
 
 .more{
@@ -111,16 +128,6 @@ textarea, select{
   padding: 10px;
 }
 
-#navbar{
-	width: 1329px;
-	margin: 0;
-	padding: 8px;
-	border-radius: 12px;
-	border-bottom: 2px solid #1aa344;;
-	display: flex;
-	justify-content: space-between;
-}
-
 .fixtbl1{
 	display:table-cell;
 	width:100px;
@@ -141,4 +148,16 @@ label{
   width: 16px;
   height: 16px;
   margin-right: 5px;
+}
+
+#navbar{
+	background-color: white;
+	top: 0;
+	width: 98%;
+	padding: 8px;
+	border-radius: 12px;
+	border: 2px solid #1aa344;;
+	display: flex;
+	justify-content: space-between;
+	position: fixed;
 }

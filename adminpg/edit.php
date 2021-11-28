@@ -56,7 +56,7 @@ if (isset($_POST["submit"])) {
     <title>Edit Data</title>
 </head>
 <body>
-    <div id="wrapper">
+    <div id="wrap">
     <form action="#" method="POST">
     <table>
     <tr>
@@ -109,9 +109,9 @@ if (isset($_POST["submit"])) {
     <td><input type="text" name="lokasi" value="<?= $result["lokasi"]; ?>"></td>
     </tr>
     </table>
-      <button type="submit" class="btn2" name="submit">Submit</button>
-      <button class="btn1"><a href="index.php">Kembali</a></button>
-    </form>
     </div>
+    <button type="submit" class="btn2" style="display: block; margin: auto; margin-bottom: 8px;" name="submit">Submit</button>
+    <a href="index.php"><button class="btn1" style="display: block; margin: auto;">Kembali</button></a>
+    </form>
 </body>
 </html>

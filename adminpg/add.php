@@ -41,8 +41,9 @@ if (isset($_POST["submit"])) {
     <title>Tambah Data</title>
 </head>
 <body>
-    <div id="wrapper">
+    
     <form action="#" method="POST">
+    <div id="wrap">
     <table id="inputan">
     <tr>
     <td><label for="name">Nama :</label></td>
@@ -95,9 +96,10 @@ if (isset($_POST["submit"])) {
     </tr>
     </table>
     </div>
-      <button type="submit" class="btn4" name="submit">Submit</button>
-      <button class="btn1"><a href="index.php">Kembali</a></button>
-    </form>
     </div>
+      <button type="submit" class="btn4" style="margin-bottom: 8px;" name="submit">Submit</button>
+      <a href="index.php"><button class="btn1" style="display: block; margin: auto;">Kembali</button></a>
+    </form>
+    
 </body>
 </html>

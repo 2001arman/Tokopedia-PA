@@ -22,7 +22,7 @@ if (isset($_POST["sort"])) {
  </head>
  <body>
     <form action="" method="POST">
-        <div id="navbar">
+    <div id="navbar">
         <div>
         <input type="text" name="search" placeholder="Search" >
         <select name='by'>
@@ -33,13 +33,14 @@ if (isset($_POST["sort"])) {
         <option value='harga'>Harga</option>
         <option value='kategori'>Kategori</option>
         </select>
-        <button type="submit" class="btn" name="cari">Cari</button>
+        <button type="submit" class="btn3" name="cari">Cari</button>
         </div>
         <div>
         <select name='sortby'>
         <option value='nama'>Nama/Judul Barang</option>
         <option value='stok'>Stok</option>
         <option value='harga'>Harga</option>
+        </select>
         <label>
         <input type="radio" name="sortto" value="ASC">Ascend
         </label>
@@ -47,13 +48,9 @@ if (isset($_POST["sort"])) {
         <label>
         <input type="radio" name="sortto" value="DESC">Descend
         </label>
-        
-        </select>
-        <button type="submit" class="btn" name="sort">Sort</button>
+        <button type="submit" class="btn3" name="sort">Sort</button>
         </div>
-        </div>
-        <br>
-        <br>
+    </div>
     </form>
     <table>
         <thead>
@@ -103,8 +100,8 @@ if (isset($_POST["sort"])) {
                 <td><?= $tbl["terjual"]; ?></td>
                 <td><?= $tbl["lokasi"]; ?></td>
                 <td>
-                    <button type="submit" class="btn1" name="del"><a href="delete.php?id=<?= $tbl["id"]?>" onclick="return confirm('Yakin ingin MENGHAPUS DATA?');">Hapus</a></button>
-                    <button class="btn2"><a href="edit.php?id=<?= $tbl["id"]?>">Edit data</a></button>
+                    <a href="delete.php?id=<?= $tbl["id"]?>" onclick="return confirm('Yakin ingin MENGHAPUS DATA?');"><button type="submit" class="btn1" name="del">Hapus</button></a>
+                    <a href="edit.php?id=<?= $tbl["id"]?>"><button class="btn2">Edit data</button></a>
                 </td>
             </tr>
             <?php $no++; ?>

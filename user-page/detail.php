@@ -95,13 +95,13 @@
     <br>
     <!-- BUTTON +KERANJANG -->
     <?php if($duplikat==true){ ?>
-    <button type="button" class="btn4">SUDAH ADA</button>
+    <button type="button" class="btn4">Sudah di Keranjang</button>
     <?php } 
     if ($duplikat==false) {?>
     <button type="submit" class="btn1" name="submit">+ Keranjang</button>
     <?php } ?>
     <br>
-    <button type="button" class="btn4" name="beli"><a href="cart.php">Beli</a></button>
+    <a href="cart.php"><button type="button" class="btn4" name="beli">Beli</button></a>
     </div>
     </div>
     </form> 

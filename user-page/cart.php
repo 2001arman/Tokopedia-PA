@@ -91,11 +91,14 @@
 	        	</div>
 
 	        	<div class="bottom" style="flex-basis: 100px">
-	        	<!-- DISINI CODING BUTTON INCREMENT &DECREMENT -->
-			    	<p class="center"><b class="subtotal">Rp<?= $result[$no-1]['stok']*$tbl["harga"]; ?></b>
+			    	<p class="center"><b class="subtotal">Rp<?= number_format($result[$no-1]['stok']*$tbl["harga"], '0', '.', '.'); ?>,00</b>|
+			    	<!-- DISINI CODING BUTTON INCREMENT &DECREMENT -->
 			        <button class="btn2min" type="button" onclick="decrement('<?= $no ?>')">-</button>
 			        <input type="number" class="qty" name="jumlah[]" value="<?= $result[$no-1]['stok'] ?>" min="1" onfocusout="calculate('<?= $no ?>')">
-			        <button class="btn2plus" type="button" onclick="increment('<?= $no ?>')">+</button></p>
+			        <button class="btn2plus" type="button" onclick="increment('<?= $no ?>')">+</button>|
+			        <a href="../adminpg/delete.php?id2=<?= $tbl["id"]?>" onclick="return confirm('Yakin ingin MENGHAPUS DATA?');">
+			        <img src="../images/bin.png" style="width: 25px; height: 25px;" onmouseover="hover(this);" onmouseout="unhover(this);"></a>
+			    </p>    
 			 	</div>
 
 			    </div>
@@ -105,7 +108,7 @@
 	             ?>
  			<!-- </form> -->
  		</div>
- 	<div>
+ 	<div class="sticky2">
  		<h4 id="black">Ringkasan Belanja</h4>
     <!-- PERHITUNGAN TOTAL PEMBELIAN -->
     <table>
@@ -211,7 +214,13 @@
 		    	document.getElementById('total').innerHTML = Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR" }).format(total);
 		    }
 	   }
+	   function hover(element) {
+		  element.setAttribute('src', '../images/bin-hover.png');
+		}
 
+		function unhover(element) {
+		  element.setAttribute('src', '../images/bin.png');
+		}
  	</script>
  </body>
  </html>
