@@ -71,7 +71,6 @@
     	<form action="" method="POST">
     	<div id="wrap">
  		<div>
- 			
  				<?php $no=1;
  				foreach ($hasil as $tbl) : ?>
 

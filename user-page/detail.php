@@ -27,7 +27,6 @@
                 document.location.href = 'detail.php?id=$idBarang';
             </script>";
         }
-
         }
 ?>
 
