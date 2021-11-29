@@ -157,28 +157,38 @@ button{
 	width: 100%;
 }
 
-.btn4:hover{
-	border: 2px solid #127a00;
-	color: #127a00;
-}
-
 .qty:focus{
 	color: #32c900;
 	border: 1px solid #32c900;
 	outline: 0;
 }
+.btn1:hover{
+	background-color: #0b6e2f;
+	cursor: pointer;
+}
+
 .btn2min:hover{
 	color: #32c900;
 	border: 1px solid #32c900;
+	cursor: pointer;
 }
+
 .btn2plus:hover{
 	color: #32c900;
 	border: 1px solid #32c900;
+	cursor: pointer;
 }
 
-.btn1:hover{
-	background-color: #0b6e2f;
+#btn3:hover{
+	cursor: pointer;
 }
+
+.btn4:hover{
+	border: 2px solid #127a00;
+	color: #127a00;
+	cursor: pointer;
+}
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;

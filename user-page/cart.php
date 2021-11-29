@@ -71,7 +71,12 @@
     	<form action="" method="POST">
     	<div id="wrap">
  		<div>
+ 				<?php if ($result==null) {?>
+ 					<h3>Anda belum menambahkan barang</h3>
+ 					<a href="main_page.php"><button type="button" id="btn3">Mulai Berbelanja</button></a>
+ 				<?php } ?>
  				<?php $no=1;
+ 				if ($result!=null) {
  				foreach ($hasil as $tbl) : ?>
 
  				<div class="card" kode-id="<?= $no ?>">
@@ -104,6 +109,7 @@
 	            <?php 
 	            $no++;
 	             endforeach; 
+	             }
 	             ?>
  			<!-- </form> -->
  		</div>

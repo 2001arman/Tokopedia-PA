@@ -7,7 +7,7 @@
   $username = $_SESSION['user'];
   $result = query("SELECT * FROM details_user WHERE username='$username'");
   $result = $result[0];
-  
+
   if(isset($_POST['nama'])){
     $nama = $_POST['nama'];
     $sql = "UPDATE details_user SET nama = '$nama' WHERE username = '$username'";
@@ -47,6 +47,52 @@
     }
   }
 
+  if(isset($_POST['no_hp'])){
+    $no_hp = $_POST['no_hp'];
+    $sql = "UPDATE details_user SET no_hp = '$no_hp' WHERE username = '$username'";
+
+    $result = mysqli_query($conn, $sql);
+
+    if($result){
+      echo "<script> alert('data nomor hp berhasil diubah'); document.location.href = 'profile.php'; </script>";
+    } else{
+      echo "<script> alert('data gagal ditambahkan'); </script>";
+    }
+  }
+
+  if(isset($_POST['newpass2'])){
+    $oldpass = $_POST['oldpass'];
+    $newpass = $_POST['newpass'];
+    $newpass2 = $_POST['newpass2'];
+    $result = query("SELECT * FROM user WHERE username = '$username'");
+    $result = $result[0];
+      if (password_verify($oldpass, $result['password'])) {
+        if ($newpass===$newpass2) {
+          $newpass = password_hash($newpass, PASSWORD_DEFAULT);
+          
+          $sql = "UPDATE user SET password = '$newpass' WHERE username = '$username'";
+
+          $result = mysqli_query($conn, $sql);
+          echo "<script>
+              alert('Password Berhasil Diubah');
+              document.location.href = 'profile.php'
+            </script>";
+        }
+        else{
+          echo "<script>
+              alert('Password Baru tidak Sama !!');
+              document.location.href = 'profile.php'
+            </script>";
+        }
+      }
+      else{
+        echo "<script>
+        alert('Password Lama salah !!');
+        document.location.href = 'profile.php'
+        </script>";
+      }
+
+  }
 ?>
 
 <!DOCTYPE html>
@@ -152,7 +198,9 @@
         <h3>Ubah Password</h3>
         <p>Password</p>
         <form action="profile.php" method="post">
-          <input type="text" name="password" id="password"><br>
+          <input type="password" name="oldpass" id="oldpass" placeholder="Password Lama" required><br>
+          <input type="password" name="newpass" id="newpass" placeholder="Password Baru" required><br>
+          <input type="password" name="newpass2" id="newpass2" placeholder="Verifikasi Password Baru" required><br>
           <button type="submit">Simpan</button>
         </form>
       </div>
