@@ -75,6 +75,7 @@
  					<h3>Anda belum menambahkan barang</h3>
  					<a href="main_page.php"><button type="button" id="btn3">Mulai Berbelanja</button></a>
  				<?php } ?>
+ 				
  				<?php $no=1;
  				if ($result!=null) {
  				foreach ($hasil as $tbl) : ?>

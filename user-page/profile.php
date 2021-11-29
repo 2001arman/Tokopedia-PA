@@ -66,6 +66,7 @@
     $newpass2 = $_POST['newpass2'];
     $result = query("SELECT * FROM user WHERE username = '$username'");
     $result = $result[0];
+    
       if (password_verify($oldpass, $result['password'])) {
         if ($newpass===$newpass2) {
           $newpass = password_hash($newpass, PASSWORD_DEFAULT);
