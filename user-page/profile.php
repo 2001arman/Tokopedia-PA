@@ -66,7 +66,7 @@
     $newpass2 = $_POST['newpass2'];
     $result = query("SELECT * FROM user WHERE username = '$username'");
     $result = $result[0];
-    
+
       if (password_verify($oldpass, $result['password'])) {
         if ($newpass===$newpass2) {
           $newpass = password_hash($newpass, PASSWORD_DEFAULT);
@@ -202,12 +202,30 @@
           <input type="password" name="oldpass" id="oldpass" placeholder="Password Lama" required><br>
           <input type="password" name="newpass" id="newpass" placeholder="Password Baru" required><br>
           <input type="password" name="newpass2" id="newpass2" placeholder="Verifikasi Password Baru" required><br>
+          <input type="checkbox" onclick="shpass()">Show Password
           <button type="submit">Simpan</button>
         </form>
       </div>
     </div>
     <!-- akhir modal Password -->
 
-    <script src="profile.js"></script>
+    <script type="text/javascript">
+      function shpass() {
+    var oldpass = document.getElementById("oldpass");
+    var newpass = document.getElementById("newpass");
+    var newpass2 = document.getElementById("newpass2");
+    if (oldpass.type === "password") {
+      oldpass.type = "text";
+      newpass.type = "text";
+      newpass2.type = "text";
+    } else {
+      oldpass.type = "password";
+      newpass.type = "password";
+      newpass2.type = "password";
+    }
+  }
+    </script>
+    <script src="profile.js">
+    </script>
   </body>
 </html>
