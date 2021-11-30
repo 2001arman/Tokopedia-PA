@@ -32,7 +32,7 @@
         <div class="user">
           <img src="../images/icon_cart.png" alt="keranjang" onClick="cartPage()" class="cart">
           <img src="../images/icon_bell.png" alt="keranjang">
-          <img src="../images/icon_email.png" alt="keranjang">
+          <img src="../images/icon_bill.png" alt="transaksi" onClick="transaksiPage()" class="cart">
           <div class="divider"></div>
           <img src="../images/icon_avatar.png" alt="avatar" class="avatar">
           <a href="profile.php"><?= $user['nama'] ?></a>
@@ -46,6 +46,9 @@
         }
         function cartPage() {
           document.location.href = "cart.php"
+        }
+        function transaksiPage() {
+          document.location.href = "transaksi.php"
         }
       </script>
 </body>

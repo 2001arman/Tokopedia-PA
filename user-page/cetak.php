@@ -9,10 +9,6 @@
   $user = query("SELECT * FROM details_user WHERE username='$username'");
   $user = $user[0];
 
-
-  
-  
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,6 +21,9 @@
     <title>tokopedia-pdf</title>
 </head>
 <body>
+
+<?php include('navbar.php')  ?>
+
 <div class="row">
   <div class="col-75">
     <div class="container">
