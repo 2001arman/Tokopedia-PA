@@ -1,6 +1,6 @@
 <?php
 require 'conn.php';
-
+error_reporting(0);
 $id = $_GET['id'];
 $id2 = $_GET['id2'];
 if ($id2==null) {
@@ -32,4 +32,4 @@ if ($id==null) {
 }
 }
 
-
+?>
