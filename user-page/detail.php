@@ -38,6 +38,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="../css/detail.css" />
+    <link rel="shortcut icon" href="https://ecs7.tokopedia.net/favicon/favicon-notif.ico" type="image/x-icon">
     <title><?= $result["nama"]; ?></title><!-- DISINI ISI PAKE VARIABEL YANG DIAMBIL -->
 </head>
 <body>
