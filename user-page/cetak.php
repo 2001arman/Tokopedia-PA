@@ -18,6 +18,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="checkout.css">
     <link rel="stylesheet" href="../css/checkout.css">
+    <link rel="shortcut icon" href="https://ecs7.tokopedia.net/favicon/favicon-notif.ico" type="image/x-icon">
     <title>tokopedia-pdf</title>
 </head>
 <body>
