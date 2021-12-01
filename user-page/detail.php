@@ -1,5 +1,6 @@
 <?php
     error_reporting(0);
+    
     session_start();
     require '../adminpg/conn.php';
     $iduser= $_SESSION['user'];//jangan lupa diubah jadi _POST
