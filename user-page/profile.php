@@ -136,7 +136,7 @@
           <span><?= $result['alamat'] ?> <a href="#" id="btnAlamat">Ubah</a></span>
           <p>Nomor Handphone</p>
           <span><?= $result['no_hp'] ?> <a href="#" id="btnHP">Ubah</a></span>
-          <button class="logout">Logout</button>
+          <button class="logout" onClick="logout()">Logout</button>
         </div>
       </div>
     </div>
@@ -194,7 +194,7 @@
     <!-- The Modal -->
     <div id="modalPassword" class="modal">
       <!-- Modal content -->
-      <div class="modal-content">
+      <div class="modal-content password">
         <span class="close" id="closePassword">&times;</span>
         <h3>Ubah Password</h3>
         <p>Password</p>
@@ -223,6 +223,9 @@
       newpass.type = "password";
       newpass2.type = "password";
     }
+  }
+  function logout() {
+    document.location.href="../logout.php";
   }
     </script>
     <script src="profile.js">

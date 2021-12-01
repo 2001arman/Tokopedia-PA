@@ -168,11 +168,11 @@
             <p class="harga">Rp. <?= number_format($data['harga'], '0', '.', '.')?></p>
             <div class="lokasi">
               <img src="../images/icon_checked.png" alt="checked" class="icon">
-              <span class="detail-barang">Kota Samarinda</span>
+              <span class="detail-barang"><?= $data['lokasi'] ?></span>
             </div>
             <div class="detail-rating">
               <img src="../images/icon_star.png" alt="star" class="icon">
-              <span class="detail-barang">4.9 | Terjual 2.2 rb</span>
+              <span class="detail-barang"><?= $data['rating']?> | Terjual <?= $data['terjual']?></span>
             </div>
           </div>
         </div>
@@ -207,11 +207,11 @@
             <p class="harga">Rp. <?= number_format($data['harga'], '0', '.', '.')?></p>
             <div class="lokasi">
               <img src="../images/icon_checked.png" alt="checked" class="icon">
-              <span class="detail-barang">Kota Samarinda</span>
+              <span class="detail-barang"><?= $data['lokasi']?></span>
             </div>
             <div class="detail-rating">
               <img src="../images/icon_star.png" alt="star" class="icon">
-              <span class="detail-barang">4.9 | Terjual 2.2 rb</span>
+              <span class="detail-barang"><?= $data['rating']?> | Terjual <?= $data['terjual']?></span>
             </div>
           </div>
         </div>

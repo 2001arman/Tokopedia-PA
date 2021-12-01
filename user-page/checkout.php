@@ -9,9 +9,6 @@
   $user = query("SELECT * FROM details_user WHERE username='$username'");
   $user = $user[0];
 
-  $select_sql = "SELECT * FROM tes WHERE id = $id";
-  $result = mysqli_query($conn, $select_sql);
-
   $total_pesanan = 0;
   $total_harga = 0;
 

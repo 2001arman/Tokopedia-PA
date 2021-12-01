@@ -24,6 +24,7 @@
 
 <?php include('navbar.php')  ?>
 
+<div class="batas"></div>
 <div class="row">
   <div class="col-75">
     <div class="container">
@@ -75,8 +76,14 @@ foreach ($id_barang as $id) {
   $cart = [];
   $cart = query("SELECT * FROM cart WHERE idbrg ='$id'");
   $cart = $cart[0];
+  $barang = [];
+  $barang = query("SELECT * FROM barang WHERE id ='$id'");
+  $barang = $barang[0];
   $stok = $cart['stok'];
+  $barang_terjual = $barang['terjual'] + $stok;
+  $barang_stok = $barang['stok'] - $stok;
   $tanggal = date("d-m-Y");
+  $conn->query("UPDATE barang SET stok='$barang_stok', terjual='$barang_terjual' WHERE id = '$id'");
   $conn->query("INSERT INTO transaksi VALUES ('','$username','$id','$stok','$tanggal')");
   $conn->query("DELETE FROM cart WHERE idbrg='$id'");
 }

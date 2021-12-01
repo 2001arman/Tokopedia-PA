@@ -85,6 +85,11 @@
   font-weight: 700;
 }
 
+.password input{
+  margin-bottom: 10px;
+}
+
+
 /* modal */
 /* The Modal (background) */
 .modal {
