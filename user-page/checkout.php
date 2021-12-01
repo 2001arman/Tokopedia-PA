@@ -1,8 +1,12 @@
 <?php
   require '../adminpg/conn.php';
-// $id = $_GET["id"];
-  $id = 1;
+
   session_start();
+  if(!isset($_SESSION['login'])){
+    header("Location: ../login.php");
+    exit;
+  }
+  
   $list_barang = $_SESSION['list'];
   $id_barang = $list_barang[0];
   $username = $_SESSION['user'];
@@ -12,24 +16,6 @@
   $total_pesanan = 0;
   $total_harga = 0;
 
-  if (isset($_POST["submit"])) {
-    $alamat = htmlspecialchars($_POST["alamat"]);
-
-    $update_sql = "UPDATE tes SET alamat='$alamat' WHERE id = '$id'";
-    $result = mysqli_query($conn, $update_sql);
-
-    if ($result) {
-        echo "<script>
-            alert('Data berhasil dicheckout!');
-            document.location.href = 'main_page.php';
-        </script>";
-    } else {
-        echo "<script>
-            alert('Data gagal dicheckout!');
-            document.location.href = 'cetak.php';
-        </script>";
-    }
-  }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -53,10 +39,6 @@
               <?= $user['nama'],' (Rumah)'; ?><br>
               <?= $user['no_hp']; ?><br>
               <?= $user['alamat']; ?><br><br>
-
-              <input type="checkbox" onclick="myFunction()"id="cek" >Pilih Alamat Lain
-              <label for="alamat"></label><br>
-              <input type="text" name ="alamat" id="alamat"value="<?= $user['alamat']; ?>"><br><br>
 
               <h4>Barang </h4>
               <?php foreach ($id_barang as $id) : ?>

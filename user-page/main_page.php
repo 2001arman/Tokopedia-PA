@@ -1,22 +1,16 @@
 <?php
-
   require '../adminpg/conn.php';
-  
+  session_start();
+  if(!isset($_SESSION['login'])){
+    header("Location: ../login.php");
+    exit;
+  }
 
   $semuaBarang = query("SELECT * FROM barang");
   $dataCelana = query("SELECT * FROM barang WHERE kategori = 'celana'");
   $dataSepatu = query("SELECT * FROM barang WHERE kategori = 'sepatu'");
   $dataBaju = query("SELECT * FROM barang WHERE kategori = 'baju'");
   $dataElektronik = query("SELECT * FROM barang WHERE kategori = 'elektronik'");
-//     if (isset($_POST["cari"])) {
-//         $by = ($_POST['by']);
-//         $result = search($_POST['search'], $by);
-//     }
-// if (isset($_POST["sort"])) {
-//     $sortto=($_POST["sortto"]);
-//     $sortkey=($_POST["sortby"]);
-//         $result= query("SELECT * FROM barang ORDER BY $sortkey $sortto ");
-// }
 
 ?>
 

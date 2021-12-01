@@ -2,6 +2,11 @@
 	require '../adminpg/conn.php';
 	session_start();
 
+  if(!isset($_SESSION['login'])){
+    header("Location: ../login.php");
+    exit;
+  }
+
 	$nama = $_SESSION['user'];
 	$result = query("SELECT * FROM transaksi WHERE username='$nama'"); //DISINI JANGAN LUPA UBAH NAMA TABEL DAN VARIABEL YANG DITARIK
 	// var_dump($result);

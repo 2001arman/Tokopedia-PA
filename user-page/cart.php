@@ -1,6 +1,10 @@
 <?php 
 	require '../adminpg/conn.php';
 	session_start();
+	if(!isset($_SESSION['login'])){
+		header("Location: ../login.php");
+		exit;
+	}
 	if(!empty($_POST['selector'])) {
 		$list[] = $_POST['selector']; //mengambil id yang dipilih dengan checkbox berupa array
 		$jumlah[] = $_POST['jumlah']; // mengambil seluruh jumlah barang array
