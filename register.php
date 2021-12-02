@@ -38,11 +38,11 @@ if ($password === $cpassword){
         </script>";
    
     }else {
-        $sql = "INSERT INTO user VALUES('','$username','$password')";
+        $sql = "INSERT INTO user (username,password) VALUES('$username','$password')";
         $result = mysqli_query($conn, $sql);
 
         if(mysqli_affected_rows($conn) > 0) {
-            $sql = "INSERT INTO details_user VALUES('$username','$nama','$alamat','$no_hp','$keranjang','$riwayat')";
+            $sql = "INSERT INTO details_user (username,nama,alamat,no_hp,keranjang,riwayat) VALUES('$username','$nama','$alamat','$no_hp','$keranjang','$riwayat')";
             $result = mysqli_query($conn, $sql);
             echo "<script>
             alert('Registrasi Telah Berhasil');

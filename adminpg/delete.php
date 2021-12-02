@@ -1,5 +1,12 @@
 <?php
 require 'conn.php';
+
+session_start();
+  if(!isset($_SESSION['login'])){
+    header("Location: ../login.php");
+    exit;
+  }
+
 error_reporting(0);
 $id = $_GET['id'];
 $id2 = $_GET['id2'];

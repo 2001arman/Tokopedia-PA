@@ -1,5 +1,10 @@
 <?php
 require 'conn.php';
+session_start();
+  if(!isset($_SESSION['login'])){
+    header("Location: ../login.php");
+    exit;
+  }
 $result = query("SELECT * FROM barang");
     if (isset($_POST["cari"])) {
         $by = ($_POST['by']);
@@ -109,7 +114,8 @@ if (isset($_POST["sort"])) {
         </tbody>
     </table>
     <br>
-    <button class="btn4"><a href="add.php">Tambah data</a></button>
+    <button class="btn4"><a href="add.php">Tambah data</a></button><br>
+    <button class="btn4"><a href="../logout.php">Logout</a></button>
 
 
 

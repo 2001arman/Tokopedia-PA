@@ -1,6 +1,12 @@
 <?php
 require 'conn.php';
 
+session_start();
+  if(!isset($_SESSION['login'])){
+    header("Location: ../login.php");
+    exit;
+  }
+
 if (isset($_POST["submit"])) {
     $nama = htmlspecialchars($_POST['name']);
     $desc = htmlspecialchars($_POST['desc']);

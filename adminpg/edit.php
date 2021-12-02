@@ -1,6 +1,12 @@
 <?php
 require 'conn.php';
 
+session_start();
+  if(!isset($_SESSION['login'])){
+    header("Location: ../login.php");
+    exit;
+  }
+
 $id = $_GET["id"];
 $result = query("SELECT * FROM barang WHERE id='$id'");
 $result = $result[0];
