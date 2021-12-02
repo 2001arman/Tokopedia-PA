@@ -85,7 +85,7 @@ foreach ($id_barang as $id) {
   $barang_stok = $barang['stok'] - $stok;
   $tanggal = date("d-m-Y");
   $conn->query("UPDATE barang SET stok='$barang_stok', terjual='$barang_terjual' WHERE id = '$id'");
-  $conn->query("INSERT INTO transaksi VALUES ('','$username','$id','$stok','$tanggal')");
+  $conn->query("INSERT INTO transaksi (username,id_barang,jumlah,tanggal) VALUES ('$username','$id','$stok','$tanggal')");
   $conn->query("DELETE FROM cart WHERE idbrg='$id'");
 }
 $_SESSION['list'] = 0; 

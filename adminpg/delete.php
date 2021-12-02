@@ -25,7 +25,8 @@ if ($id2==null) {
 }
 }
 if ($id==null) {
-    $conn->query("DELETE FROM cart WHERE idbrg='$id2'");
+    $user = $_SESSION['user'];
+    $conn->query("DELETE FROM cart WHERE idbrg='$id2' and iduser = '$user'");
     if ($conn) {
     echo "<script>
         alert('Data berhasil dihapus!');
