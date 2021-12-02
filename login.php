@@ -3,8 +3,12 @@ session_start();
 require 'koneksi.php';
 
 if(isset($_SESSION['login'])){
-
     header("Location: index.php");
+    exit;
+}
+
+if(isset($_SESSION['admin'])){
+    header("Location: adminpg/index.php");
     exit;
 }
 
@@ -50,7 +54,7 @@ foreach ($list_user as $key => $value) {
 	
 	if($value['username'] == $user['username'] && $value['password'] == $user['password']){
 
-		$_SESSION['login'] = true;
+		$_SESSION['admin'] = true;
 		header("Location: adminpg/index.php");
 
 	}
