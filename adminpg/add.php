@@ -2,7 +2,7 @@
 require 'conn.php';
 
 session_start();
-  if(!isset($_SESSION['login'])){
+  if(!isset($_SESSION['admin'])){
     header("Location: ../login.php");
     exit;
   }
@@ -17,7 +17,7 @@ if (isset($_POST["submit"])) {
     $rating = htmlspecialchars($_POST['rating']);
     $terjual = htmlspecialchars($_POST['terjual']);
     $lokasi = htmlspecialchars($_POST['lokasi']);
-    $conn->query("INSERT INTO barang VALUES ('','$nama','$desc','$stok','$harga','$gambar','$kategori','$rating','$terjual','$lokasi')");
+    $conn->query("INSERT INTO barang (nama, deskripsi, stok, harga, gambar, kategori, rating, terjual, lokasi) VALUES ('$nama','$desc','$stok','$harga','$gambar','$kategori','$rating','$terjual','$lokasi')");
     
     if ($conn) {
         echo "<script>
